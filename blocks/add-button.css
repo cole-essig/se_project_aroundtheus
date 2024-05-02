@@ -1,0 +1,19 @@
+.add-button {
+  width: 150px;
+  height: 50px;
+  border: solid 2px #fff;
+  background-color: black;
+  margin: 35px 0 35px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.add-button__image {
+  width: 22px;
+  height: 22px;
+  margin: auto;
+}
+
+.add-button:hover {
+  opacity: 0.5;
+}

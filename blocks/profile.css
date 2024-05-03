@@ -37,6 +37,9 @@
   font-size: 42px;
   line-height: 1.2;
   font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__badge {
@@ -48,6 +51,9 @@
   font-size: 18px;
   line-height: 1.2;
   font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 515px) and (min-width: 320px) {

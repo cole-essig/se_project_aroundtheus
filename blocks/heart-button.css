@@ -17,3 +17,14 @@
 .heart-button:hover {
   opacity: 0.5;
 }
+
+@media screen and (max-width: 770px) and (min-width: 320px) {
+  .heart-button {
+    transition: opacity 2s ease-in-out;
+  }
+
+  .heart-button:hover,
+  .heart-button:active {
+    opacity: 0.5;
+  }
+}

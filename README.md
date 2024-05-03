@@ -6,6 +6,7 @@
 - Description
 - Features
 - Improvement
+- Links
 
 **Intro**
 
@@ -33,3 +34,7 @@ This project is made so all the elements are displayed correctly on popular scre
 - Add a function that enlarges photos when engaged with.
 - Add styles that can be changed by user.
 - Add option for horizontal scroling threw grid, with no overflow of page\_\_content selector.
+
+**Links**
+
+[Website](https://cole-essig.github.io/se_project_aroundtheus/)

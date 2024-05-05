@@ -16,24 +16,23 @@
 }
 
 .add-button:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
-@media screen and (max-width: 515px) and (min-width: 320px) {
-  .add-button {
-    width: 282px;
-    padding: 0;
-    margin-bottom: 0;
-  }
-}
-
-@media screen and (max-width: 770px) and (min-width: 320px) {
+@media screen and (max-width: 770px) {
   .add-button {
     transition: opacity 2s ease-in-out;
   }
 
   .add-button:hover,
   .add-button:active {
-    opacity: 0.5;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .add-button {
+    width: 282px;
+    padding: 0;
+    margin-bottom: 0;
   }
 }

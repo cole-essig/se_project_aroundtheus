@@ -38,3 +38,4 @@ This project is made so all the elements are displayed correctly on popular scre
 **Links**
 
 [Website](https://cole-essig.github.io/se_project_aroundtheus/)
+[Video Description/Explanation](https://www.loom.com/share/8aebd8a5a23445c29e8c8df0b94bd965?sid=abb42dc1-322d-4687-af03-5cbb87c9af29)

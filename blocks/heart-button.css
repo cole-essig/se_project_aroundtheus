@@ -1,5 +1,5 @@
 .heart-button {
-  margin: auto 30px 30px 0;
+  margin: auto 20px 30px 0;
   padding: 0;
   background-color: #fff;
   border: none;
@@ -15,16 +15,15 @@
 }
 
 .heart-button:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
-@media screen and (max-width: 770px) and (min-width: 320px) {
+@media screen and (max-width: 770px) {
   .heart-button {
     transition: opacity 2s ease-in-out;
   }
 
   .heart-button:hover,
   .heart-button:active {
-    opacity: 0.5;
   }
 }

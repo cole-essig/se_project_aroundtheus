@@ -28,7 +28,7 @@
   }
 }
 
-@media screen and (max-width: 515px) and (min-width: 320px) {
+@media screen and (max-width: 515px) {
   .page__content {
     margin: 0 19px;
     max-width: calc(100% - 38px);

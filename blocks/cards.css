@@ -15,9 +15,16 @@
 @media screen and (max-width: 637px) {
   .cards {
     display: flex;
+    max-width: calc(100% - 40px);
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    margin: 36px 0 0;
+    margin: 36px 20px 0;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .cards {
+    max-width: calc(100% - 38px);
   }
 }

@@ -24,9 +24,8 @@
     transition: opacity 2s ease-in-out;
   }
 
-  .edit-button:hover,
-  .edit-button:active {
-    opacity: 0.7;
+  .edit-button:focus {
+    opacity: 0.6;
   }
 }
 

@@ -15,7 +15,7 @@
 }
 
 .heart-button:hover {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 770px) {
@@ -23,8 +23,7 @@
     transition: opacity 2s ease-in-out;
   }
 
-  .heart-button:hover,
-  .heart-button:active {
-    opacity: 0.7;
+  .heart-button:focus {
+    opacity: 0.5;
   }
 }

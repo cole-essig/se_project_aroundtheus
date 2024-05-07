@@ -11,7 +11,7 @@
   margin: 45px auto 41px 0;
 }
 
-@media screen and (max-width: 515px) {
+@media screen and (max-width: 637px) {
   .header__logo {
     margin: 28px auto 32px 27px;
     width: 126px;
@@ -20,7 +20,7 @@
 
   .header {
     width: 100vw;
-    position: relative;
-    left: calc(-50vw + 50%);
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
   }
 }

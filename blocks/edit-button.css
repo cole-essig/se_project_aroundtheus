@@ -26,10 +26,11 @@
 
   .edit-button:hover,
   .edit-button:active {
+    opacity: 0.7;
   }
 }
 
-@media screen and (max-width: 622px) {
+@media screen and (max-width: 637px) {
   .edit-button {
     margin: 0 0 0 18px;
   }

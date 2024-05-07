@@ -20,13 +20,13 @@
 @media screen and (max-width: 915px) {
   .page__content {
     margin: 0 20px;
-    max-width: calc(100% - 40px);
+    max-width: 100%;
   }
 }
 
-@media screen and (max-width: 515px) {
+@media screen and (max-width: 637px) {
   .page__content {
-    margin: 0 19px;
-    max-width: calc(100% - 38px);
+    margin: 0;
+    padding: 0;
   }
 }

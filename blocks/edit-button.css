@@ -17,16 +17,12 @@
 
 .edit-button:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 770px) {
   .edit-button {
     transition: opacity 2s ease-in-out;
-  }
-
-  .edit-button:hover,
-  .edit-button:active {
-    opacity: 0.7;
   }
 }
 

@@ -18,16 +18,12 @@
 
 .add-button:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 770px) {
   .add-button {
     transition: opacity 2s ease-in-out;
-  }
-
-  .add-button:hover,
-  .add-button:active {
-    opacity: 0.7;
   }
 }
 
@@ -35,6 +31,6 @@
   .add-button {
     max-width: 282px;
     padding: 0;
-    margin: 35px 0 35px 0;
+    margin: 35px 0 0;
   }
 }

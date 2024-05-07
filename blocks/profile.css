@@ -52,7 +52,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 100%;
+  max-width: 282px;
 }
 
 @media screen and (max-width: 830px) {
@@ -63,10 +63,12 @@
 
 @media screen and (max-width: 637px) {
   .profile {
-    max-width: 100%;
+    display: flex;
+    max-width: calc(100% - 40px);
     height: inherit;
     flex-direction: column;
     align-items: center;
+    margin: 0 20px 0;
   }
 
   .profile__picture {
@@ -74,7 +76,7 @@
   }
 
   .profile__section {
-    max-width: 282px;
+    max-width: 100%;
   }
 
   .profile__info {
@@ -82,6 +84,7 @@
     flex-direction: column;
     align-items: center;
     padding: 0;
+    max-width: calc(100% - 40px);
   }
 
   .profile__name {
@@ -93,11 +96,19 @@
   .profile__badge {
     font-size: 14px;
     margin: 0;
-    max-width: 282px;
   }
 }
 
 @media screen and (max-width: 515px) {
+  .profile {
+    margin: 0 19px 0;
+    max-width: calc(100% - 38px);
+  }
+
+  .profile__info {
+    max-width: calc(100% - 38px);
+  }
+
   .profile__name {
     font-size: 22px;
   }

@@ -23,4 +23,8 @@
   .heart-button {
     transition: opacity 2s ease-in-out;
   }
+
+  .heart-button:focus {
+    opacity: 0.5;
+  }
 }

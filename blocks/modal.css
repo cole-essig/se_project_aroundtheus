@@ -21,12 +21,15 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  padding: 36px;
   border-radius: 10px;
   border: solid 1px #000;
   max-width: 430px;
   width: 100%;
   min-height: 330px;
+}
+
+.modal__content {
+  padding: 36px;
 }
 
 .modal__close {
@@ -42,6 +45,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   transition: opacity 0.5s ease-in-out;
+  padding: 0;
 }
 
 .modal__close:hover {
@@ -50,6 +54,7 @@
 }
 
 .modal__heading {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 24px;
   font-weight: 900;
   line-height: 1.2;
@@ -59,11 +64,27 @@
 }
 
 .modal__form {
-  max-width: 358px;
   width: 100%;
-  min-height: 27px;
+}
+
+.modal__input {
+  width: calc(100% - 4px);
+  margin: 0 0 30px;
+  border: none;
   border-bottom: solid 1px #000;
-  margin: 0 30px;
+  padding: 0 0 13px;
+}
+
+.modal__input::placeholder {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #000;
+}
+
+.modal__form:nth-child(2) {
+  margin: 0 48px 0;
 }
 
 .modal__button {
@@ -73,7 +94,6 @@
   text-align: center;
   color: #fff;
   background-color: #000;
-  max-width: 358px;
   width: 100%;
   min-height: 50px;
   margin: 0 0 36px;
@@ -81,7 +101,20 @@
   transition: opacity 0.5s ease-in-out;
 }
 
-.modal:hover {
+.modal__button:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+@media screen and (max-width: 637px) {
+  .modal__content {
+    padding: 22px;
+  }
+
+  .modal__close {
+    bottom: calc(100% + 13px);
+    left: calc(100% - 26px);
+    width: 26px;
+    height: 26px;
+  }
 }

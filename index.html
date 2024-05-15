@@ -213,13 +213,27 @@
 
       <div class="modal" id="profile-edit-modal">
         <div class="modal__container">
-          <button class="modal__close"></button>
-          <p class="modal__heading">Edit Profile</p>
-          <form class="modal__form">
-            <input type="text" name="name" />
-            <input type="text" name="badge" />
-            <button class="modal__button">Save</button>
-          </form>
+          <div class="modal__content">
+            <button class="modal__close"></button>
+            <p class="modal__heading">Edit Profile</p>
+            <form class="modal__form">
+              <input
+                type="text"
+                name="name"
+                class="modal__input"
+                id="name"
+                placeholder="Jacques"
+              />
+              <input
+                type="text"
+                name="badge"
+                class="modal__input"
+                id="description"
+                placeholder="Explorer"
+              />
+              <button class="modal__button" type="submit">Save</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

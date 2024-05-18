@@ -34,11 +34,21 @@ const initialCards = [
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileButtonModalClose = document.querySelector("#profile-modal-close");
+const profileName = document.querySelector("#profile-name");
+const profileBadge = document.querySelector("#profile-badge");
+const profileNameInput = document.querySelector("#profile-name-input");
+const profileBadgeInput = document.querySelector("#profile-badge-input");
+const profileEditForm = profileEditModal.querySelector(".modal__form");
 
 profileEditButton.addEventListener("click", () => {
+  profileNameInput.value = profileName.textContent;
+  profileBadgeInput.value = profileBadge.textContent;
+
   profileEditModal.classList.toggle("modal_opened");
 });
 
 profileButtonModalClose.addEventListener("click", () => {
   profileEditModal.classList.toggle("modal_opened");
 });
+
+profileEditForm.addEventListener("submit");

@@ -37,7 +37,9 @@
                 class="profile__picture"
               />
               <div class="profile__section">
-                <h1 class="profile__name">Jacques Cousteau</h1>
+                <h1 class="profile__name" id="profile-name">
+                  Jacques Cousteau
+                </h1>
                 <button
                   class="edit-button"
                   aria-label="Edit button for profile name"
@@ -51,7 +53,7 @@
                   />
                 </button>
               </div>
-              <p class="profile__badge">Explorer</p>
+              <p class="profile__badge" id="profile-badge">Explorer</p>
             </div>
             <button
               class="add-button"
@@ -221,15 +223,13 @@
                 type="text"
                 name="name"
                 class="modal__input"
-                id="name"
-                placeholder="Jacques"
+                id="profile-name-input"
               />
               <input
                 type="text"
                 name="badge"
                 class="modal__input"
-                id="description"
-                placeholder="Explorer"
+                id="profile-badge-input"
               />
               <button class="modal__button" type="submit">Save</button>
             </form>

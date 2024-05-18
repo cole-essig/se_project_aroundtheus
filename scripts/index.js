@@ -52,7 +52,9 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
-  const cardAltEl = cardElement.setAttribute("alt", cardTitleEl.textContent);
+  const cardAltEl = cardElement
+    .querySelector(".card__image")
+    .setAttribute("alt", cardData.name);
 
   cardImageEl.src = cardData.link;
   cardTitleEl.textContent = cardData.name;
@@ -64,7 +66,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileBadge.textContent = profileBadgeInput.value;
-  closePopup;
+  closePopup();
 }
 
 /* Event Listeners */

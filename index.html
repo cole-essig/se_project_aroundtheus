@@ -68,145 +68,7 @@
             </button>
           </section>
 
-          <section class="cards">
-            <div class="card">
-              <img
-                src="./images/yosemite-valley.jpg"
-                alt="User Picture of Card Title"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Yosemite Valley</h2>
-
-                <button
-                  class="heart-button"
-                  aria-label="Interaction or like button"
-                  type="button"
-                >
-                  <img
-                    src="./images/heart-button.svg"
-                    alt="Heart shaped post interaction button"
-                    class="heart-button__image"
-                  />
-                </button>
-              </div>
-            </div>
-
-            <div class="card">
-              <img
-                src="./images/lake-louise.png"
-                alt="User Picture of Card Title"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Lake Louise</h2>
-
-                <button
-                  class="heart-button"
-                  aria-label="Interaction or like button"
-                  type="button"
-                >
-                  <img
-                    src="./images/heart-button.svg"
-                    alt="Heart shaped post interaction button"
-                    class="heart-button__image"
-                  />
-                </button>
-              </div>
-            </div>
-
-            <div class="card">
-              <img
-                src="./images/bald-mountains.png"
-                alt="User Picture of Card Title"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Bald Mountains</h2>
-
-                <button
-                  class="heart-button"
-                  aria-label="Interaction or like button"
-                  type="button"
-                >
-                  <img
-                    src="./images/heart-button.svg"
-                    alt="Heart shaped post interaction button"
-                    class="heart-button__image"
-                  />
-                </button>
-              </div>
-            </div>
-
-            <div class="card">
-              <img
-                src="./images/latemar.png"
-                alt="User Picture of Card Title"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Latemar</h2>
-
-                <button
-                  class="heart-button"
-                  aria-label="Interaction or like button"
-                  type="button"
-                >
-                  <img
-                    src="./images/heart-button.svg"
-                    alt="Heart shaped post interaction button"
-                    class="heart-button__image"
-                  />
-                </button>
-              </div>
-            </div>
-
-            <div class="card">
-              <img
-                src="./images/vanoise-national-park.png"
-                alt="User Picture of Card Title"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Vanoise National Park</h2>
-
-                <button
-                  class="heart-button"
-                  aria-label="Interaction or like button"
-                  type="button"
-                >
-                  <img
-                    src="./images/heart-button.svg"
-                    alt="Heart shaped post interaction button"
-                    class="heart-button__image"
-                  />
-                </button>
-              </div>
-            </div>
-
-            <div class="card">
-              <img
-                src="./images/lago-di-braies.png"
-                alt="User Picture of Card Title"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Laigo di Braies</h2>
-
-                <button
-                  class="heart-button"
-                  aria-label="Interaction or like button"
-                  type="button"
-                >
-                  <img
-                    src="./images/heart-button.svg"
-                    alt="Heart shaped post interaction button"
-                    class="heart-button__image"
-                  />
-                </button>
-              </div>
-            </div>
-          </section>
+          <section class="cards"></section>
         </main>
         <footer class="footer">
           <p class="footer__copyright">© 2022 Around The U.S.</p>
@@ -237,6 +99,32 @@
         </div>
       </div>
     </div>
+
+    <template id="card-template">
+      <div class="card">
+        <img
+          src="./images/yosemite-valley.jpg"
+          alt="User Picture of Card Title"
+          class="card__image"
+        />
+        <div class="card__info">
+          <h2 class="card__title">Yosemite Valley</h2>
+
+          <button
+            class="heart-button"
+            aria-label="Interaction or like button"
+            type="button"
+          >
+            <img
+              src="./images/heart-button.svg"
+              alt="Heart shaped post interaction button"
+              class="heart-button__image"
+            />
+          </button>
+        </div>
+      </div>
+    </template>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>

@@ -40,10 +40,22 @@ const profileNameInput = document.querySelector("#profile-name-input");
 const profileBadgeInput = document.querySelector("#profile-badge-input");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 
+/* Functions */
+
 function closePopup() {
   profileEditModal.classList.toggle("modal_opened");
 }
 
+/* Event Handlers */
+
+function handleProfileEditSubmit(e) {
+  e.preventDefault();
+  profileName.textContent = profileNameInput.value;
+  profileBadge.textContent = profileBadgeInput.value;
+  closePopup;
+}
+
+/* Event Listeners */
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent.trim();
   profileBadgeInput.value = profileBadge.textContent;
@@ -51,13 +63,6 @@ profileEditButton.addEventListener("click", () => {
   profileEditModal.classList.toggle("modal_opened");
 });
 
-profileButtonModalClose.addEventListener("click", () => {
-  profileEditModal.classList.toggle("modal_opened");
-});
+profileButtonModalClose.addEventListener("click", closePopup);
 
-profileEditForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  profileName.textContent = profileNameInput.value;
-  profileBadge.textContent = profileBadgeInput.value;
-  closePopup;
-});
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);

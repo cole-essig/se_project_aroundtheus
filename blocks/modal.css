@@ -120,6 +120,11 @@
     padding: 22px;
   }
 
+  .modal__heading {
+    font-size: 18px;
+    margin: 3px auto 75px 0;
+  }
+
   .modal__close {
     bottom: calc(100% + 13px);
     left: calc(100% - 26px);

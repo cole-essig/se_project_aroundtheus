@@ -78,6 +78,9 @@
   font-size: 14px;
   line-height: 1.2;
   color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 .modal__input::placeholder {

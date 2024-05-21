@@ -73,6 +73,11 @@
   border: none;
   border-bottom: solid 1px #000;
   padding: 0 0 13px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #000;
 }
 
 .modal__input::placeholder {
@@ -88,6 +93,7 @@
 }
 
 .modal__button {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 18px;
   line-height: 1.2;
   font-weight: 400;

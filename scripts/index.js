@@ -1,31 +1,31 @@
 const initialCards = [
   {
-    name: "Yosemite Valley",
+    title: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
 
   {
-    name: "Lake Louise",
+    title: "Lake Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
   },
 
   {
-    name: "Bald Mountains",
+    title: "Bald Mountains",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
   },
 
   {
-    name: "Latemar",
+    title: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
 
   {
-    name: "Vanoise National Park",
+    title: "Vanoise National Park",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   },
 
   {
-    name: "Lago di Braies",
+    title: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
@@ -68,9 +68,14 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".card__title");
 
   cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  cardTitleEl.textContent = cardData.name;
+  cardImageEl.alt = cardData.title;
+  cardTitleEl.textContent = cardData.title;
   return cardElement;
+}
+
+function renderCard(cardData) {
+  const cardElement = getCardElement(cardData);
+  cardDivEl.prepend(cardElement);
 }
 /* EVENT HANDLERS */
 
@@ -83,8 +88,9 @@ function handleProfileEditSubmit(e) {
 
 function handleCardAddSubmit(e) {
   e.preventDefault();
-  // initialCards.append(cardTitleIput.value);
-  // initialCards.append(cardUrlInput.value);
+  const title = cardTitleIput.value;
+  const link = cardUrlInput.value;
+  renderCard({ title, link });
   closeModal(cardAddModal);
 }
 
@@ -111,7 +117,4 @@ cardAddForm.addEventListener("submit", handleCardAddSubmit);
 
 /*loops*/
 
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardDivEl.prepend(cardElement);
-});
+initialCards.forEach((cardData) => renderCard(cardData));

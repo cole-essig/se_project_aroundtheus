@@ -59,6 +59,7 @@
               class="add-button"
               aria-label="Button for adding photos to page"
               type="button"
+              id="card-add-button"
             >
               <img
                 src="./images/add-button.svg"
@@ -80,7 +81,7 @@
           <div class="modal__content">
             <button class="modal__close" id="profile-modal-close"></button>
             <p class="modal__heading">Edit Profile</p>
-            <form class="modal__form">
+            <form class="modal__form" id="modal-form-1">
               <input
                 type="text"
                 name="name"
@@ -92,6 +93,32 @@
                 name="badge"
                 class="modal__input"
                 id="profile-badge-input"
+              />
+              <button class="modal__button" type="submit">Save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="card-add-modal">
+        <div class="modal__container">
+          <div class="modal__content">
+            <button class="modal__close" id="card-modal-close"></button>
+            <p class="modal__heading">New Place</p>
+            <form class="modal__form" id="modal-form-2">
+              <input
+                type="text"
+                name="name"
+                class="modal__input"
+                placeholder="Title"
+                id="card-title-input"
+              />
+              <input
+                type="url"
+                name="card-url"
+                class="modal__input"
+                placeholder="Image URL"
+                id="card-url-input"
               />
               <button class="modal__button" type="submit">Save</button>
             </form>

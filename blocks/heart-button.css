@@ -4,14 +4,19 @@
   background-color: #fff;
   border: none;
   width: 21px;
-  height: 18px;
+  height: 19px;
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
+}
+
+.heart-button-active {
+  background-color: #000;
 }
 
 .heart-button__image {
   width: 21px;
   height: 18px;
+  object-fit: cover;
 }
 
 .heart-button:hover {

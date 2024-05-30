@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   max-width: 282px;
   min-height: 361px;
   z-index: 0;
@@ -14,6 +15,23 @@
   background-position: center;
   background-size: cover;
   object-fit: cover;
+}
+
+.card__delete-button {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 18px;
+  height: 19px;
+}
+
+.card__delete-button_image {
+  width: 18px;
+  height: 19px;
 }
 
 .card__info {

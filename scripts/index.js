@@ -1,32 +1,32 @@
 const initialCards = [
   {
     title: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+    link: "../images/yosemite-valley.jpg",
   },
 
   {
     title: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+    link: "../images/lake-louise.png",
   },
 
   {
     title: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    link: "../images/bald-mountains.png",
   },
 
   {
     title: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    link: "../images/latemar.png",
   },
 
   {
     title: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+    link: "../images/vanoise-national-park.png",
   },
 
   {
     title: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+    link: "../images/lago-di-braies.png",
   },
 ];
 

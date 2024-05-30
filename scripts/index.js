@@ -69,7 +69,8 @@ function getCardElement(cardData) {
   const likeButton = cardElement.querySelector(".heart-button");
 
   likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle(".heart-button-active");
+    likeButton.classList.toggle("heart-button_active");
+    console.log("hi");
   });
 
   cardImageEl.src = cardData.link;

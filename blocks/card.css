@@ -13,6 +13,7 @@
   height: 282px;
   background-position: center;
   background-size: cover;
+  object-fit: cover;
 }
 
 .card__info {

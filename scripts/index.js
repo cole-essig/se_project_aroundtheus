@@ -51,6 +51,10 @@ const cardButtonModalClose = document.querySelector("#card-modal-close");
 const cardTitleIput = document.querySelector("#card-title-input");
 const cardUrlInput = document.querySelector("#card-url-input");
 const cardAddForm = cardAddModal.querySelector("#modal-form-2");
+// IMAGE MODAL PREVIEW
+const imagePreviewModal = document.querySelector("#image-preview-modal");
+const imagePreviewModalClose = document.querySelector("#card-modal-close");
+const imagePreviewSrc = document.querySelector("#modal-preview-image-src");
 
 /* FUNCTIONS */
 
@@ -69,6 +73,11 @@ function getCardElement(cardData) {
 
   const likeButton = cardElement.querySelector(".heart-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");
+
+  cardImageEl.addEventListener("click", () => {
+    openModal(imagePreviewModal);
+    imagePreviewSrc.src = cardImageEl.src;
+  });
 
   deleteButton.addEventListener("click", () => {
     cardElement.remove();

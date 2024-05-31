@@ -78,6 +78,7 @@ function getCardElement(cardData) {
   cardImageEl.addEventListener("click", () => {
     openModal(imagePreviewModal);
     imagePreviewSrc.src = cardImageEl.src;
+    imagePreviewSrc.alt = `Photo of ${cardData.name}`;
     imagePreviewTitle.textContent = cardTitleEl.textContent;
   });
 
@@ -87,7 +88,6 @@ function getCardElement(cardData) {
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("heart-button_active");
-    console.log("hi");
   });
 
   cardImageEl.src = cardData.link;
@@ -99,6 +99,11 @@ function getCardElement(cardData) {
 function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
   cardDivEl.prepend(cardElement);
+}
+
+function fillProfileForm() {
+  profileNameInput.value = profileName.textContent.trim();
+  profileBadgeInput.value = profileBadge.textContent;
 }
 /* EVENT HANDLERS */
 
@@ -115,14 +120,13 @@ function handleCardAddSubmit(e) {
   const link = cardUrlInput.value;
   renderCard({ title, link });
   closeModal(cardAddModal);
+  cardAddForm.reset();
 }
 
 /* EVENT LISTENERS */
 // OPEN MODAL
 profileEditButton.addEventListener("click", () => {
-  profileNameInput.value = profileName.textContent.trim();
-  profileBadgeInput.value = profileBadge.textContent;
-
+  fillProfileForm();
   openModal(profileEditModal);
 });
 

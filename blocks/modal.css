@@ -118,6 +118,25 @@
   text-overflow: clip;
 }
 
+.modal__input_type_error {
+  margin: 0 0 5px;
+  border-bottom: solid 1px #ff0000;
+}
+
+.modal__error {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #ff0000;
+  opacity: 0;
+}
+
+.modal__error_visible {
+  transition: opacity 0.25s linear;
+  opacity: 1;
+}
+
 .modal__input::placeholder {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -143,6 +162,10 @@
   margin: 0 0 36px;
   padding: 0;
   transition: opacity 0.5s ease-in-out;
+}
+
+.modal__button_disabled {
+  margin: 31px 0 36px;
 }
 
 .modal__button:hover {

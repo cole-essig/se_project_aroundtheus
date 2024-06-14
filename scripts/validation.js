@@ -1,6 +1,3 @@
-// enabling validation by calling enableValidation()
-// pass all the settings on call
-
 function showInputError(formEl, inputEl, options) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.add(options.inputErrorClass);
@@ -23,21 +20,31 @@ function checkInputValidity(formEl, inputEl, options) {
   }
 }
 
-function toggleButtonState(inputEls, submitButton, options) {
-  let foundInvalid = false;
-  inputEls.forEach((inputEl) => {
-    if (!inputEl.validity.valid) {
-      foundInvalid = true;
-    }
-  });
+function hasInvalidInput(inputList) {
+  return !inputList.every((inputEl) => inputEl.validity.valid);
+}
 
-  if (foundInvalid) {
-    submitButton.classList.add(options.inactiveButtonClass);
+function disableButton(inputEls, submitButton, inactiveButtonClass) {
+  if (hasInvalidInput(inputEls)) {
+    submitButton.classList.add(inactiveButtonClass);
     submitButton.disabled = true;
-  } else {
-    submitButton.classList.remove(options.inactiveButtonClass);
+    return;
+  }
+}
+
+function enableButton(inputEls, submitButton, inactiveButtonClass) {
+  if (!hasInvalidInput([...inputEls])) {
+    submitButton.classList.remove(inactiveButtonClass);
     submitButton.disabled = false;
   }
+}
+
+function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
+  if (hasInvalidInput(inputEls)) {
+    disableButton(inputEls, submitButton, inactiveButtonClass);
+    return;
+  }
+  enableButton(inputEls, submitButton, inactiveButtonClass);
 }
 
 function setEventListeners(formEl, options) {

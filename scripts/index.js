@@ -67,6 +67,17 @@ function closeModal(modal) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeModal(modal);
+    }
+  });
+  modalOverlay.addEventListener("click", function (e) {
+    if (e.target != this) {
+      return;
+    }
+    closeModal(modal);
+  });
 }
 
 function getCardElement(cardData) {
@@ -146,9 +157,6 @@ imagePreviewModalClose.addEventListener("click", () =>
   closeModal(imagePreviewModal)
 );
 
-modalOverlay.addEventListener("click", () => closeModal(profileEditModal));
-
-modalOverlay.addEventListener("keydown", () => closeModal(profileEditModal));
 // SUBMIT FORM
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 cardAddForm.addEventListener("submit", handleCardAddSubmit);

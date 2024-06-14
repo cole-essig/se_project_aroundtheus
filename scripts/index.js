@@ -56,6 +56,8 @@ const imagePreviewModal = document.querySelector("#image-preview-modal");
 const imagePreviewModalClose = document.querySelector("#image-modal-close");
 const imagePreviewSrc = document.querySelector("#modal-preview-image-src");
 const imagePreviewTitle = document.querySelector(".modal__image-preview_text");
+// MODAL OVERLAY LISTENER
+const modalOverlay = document.querySelector(".modal");
 
 /* FUNCTIONS */
 
@@ -133,6 +135,7 @@ profileEditButton.addEventListener("click", () => {
 cardAddButton.addEventListener("click", () => {
   openModal(cardAddModal);
 });
+
 // CLOSE MODAL
 profileButtonModalClose.addEventListener("click", () =>
   closeModal(profileEditModal)
@@ -142,6 +145,10 @@ cardButtonModalClose.addEventListener("click", () => closeModal(cardAddModal));
 imagePreviewModalClose.addEventListener("click", () =>
   closeModal(imagePreviewModal)
 );
+
+modalOverlay.addEventListener("click", () => closeModal(profileEditModal));
+
+modalOverlay.addEventListener("keydown", () => closeModal(profileEditModal));
 // SUBMIT FORM
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 cardAddForm.addEventListener("submit", handleCardAddSubmit);

@@ -176,6 +176,11 @@
   cursor: pointer;
 }
 
+.modal__button_disabled:hover {
+  opacity: 0.2;
+  cursor: default;
+}
+
 @media screen and (max-width: 637px) {
   .modal__content {
     padding: 22px;

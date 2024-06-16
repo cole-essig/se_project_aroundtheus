@@ -61,23 +61,31 @@ const modalOverlay = document.querySelector(".modal");
 
 /* FUNCTIONS */
 
+function closeWithEsc(e) {
+  if (e.key === "Escape") {
+    const openedModal = document.querySelector(".modal");
+    closeModal(openedModal);
+  }
+}
+
+function closeWithClick(e) {
+  if (e.target != this) {
+    return;
+  }
+  const openedModal = document.querySelector(".modal");
+  closeModal(openedModal);
+}
+
 function closeModal(modal) {
+  document.removeEventListener("keydown", closeWithEsc);
+  modalOverlay.removeEventListener("click", closeWithClick);
   modal.classList.remove("modal_opened");
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      closeModal(modal);
-    }
-  });
-  modalOverlay.addEventListener("click", function (e) {
-    if (e.target != this) {
-      return;
-    }
-    closeModal(modal);
-  });
+  document.addEventListener("keydown", closeWithEsc);
+  modalOverlay.addEventListener("click", closeWithClick);
 }
 
 function getCardElement(cardData) {

@@ -25,18 +25,14 @@ function hasInvalidInput(inputList) {
 }
 
 function disableButton(inputEls, submitButton, inactiveButtonClass) {
-  if (hasInvalidInput(inputEls)) {
-    submitButton.classList.add(inactiveButtonClass);
-    submitButton.disabled = true;
-    return;
-  }
+  submitButton.classList.add(inactiveButtonClass);
+  submitButton.disabled = true;
+  return;
 }
 
 function enableButton(inputEls, submitButton, inactiveButtonClass) {
-  if (!hasInvalidInput([...inputEls])) {
-    submitButton.classList.remove(inactiveButtonClass);
-    submitButton.disabled = false;
-  }
+  submitButton.classList.remove(inactiveButtonClass);
+  submitButton.disabled = false;
 }
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
@@ -52,7 +48,7 @@ function setEventListeners(formEl, options) {
   const submitButton = formEl.querySelector(options.submitButtonSelector);
 
   inputEls.forEach((inputEl) => {
-    inputEl.addEventListener("keydown", (e) => {
+    inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, options);
       toggleButtonState(inputEls, submitButton, options);
     });

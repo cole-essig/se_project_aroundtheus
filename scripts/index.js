@@ -82,8 +82,8 @@ function closeModal(modal) {
 }
 
 function openModal(modal) {
-  const modalOverlay = document.querySelector(".modal_opened");
   modal.classList.add("modal_opened");
+  const modalOverlay = document.querySelector(".modal_opened");
   document.addEventListener("keydown", closeWithEsc);
   modalOverlay.addEventListener("click", closeWithClick);
 }

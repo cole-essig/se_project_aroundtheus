@@ -56,14 +56,12 @@ const imagePreviewModal = document.querySelector("#image-preview-modal");
 const imagePreviewModalClose = document.querySelector("#image-modal-close");
 const imagePreviewSrc = document.querySelector("#modal-preview-image-src");
 const imagePreviewTitle = document.querySelector(".modal__image-preview_text");
-// MODAL OVERLAY LISTENER
-const modalOverlay = document.querySelector(".modal");
 
 /* FUNCTIONS */
 
 function closeWithEsc(e) {
   if (e.key === "Escape") {
-    const openedModal = document.querySelector(".modal");
+    const openedModal = document.querySelector(".modal_opened");
     closeModal(openedModal);
   }
 }
@@ -72,17 +70,19 @@ function closeWithClick(e) {
   if (e.target != this) {
     return;
   }
-  const openedModal = document.querySelector(".modal");
+  const openedModal = document.querySelector(".modal_opened");
   closeModal(openedModal);
 }
 
 function closeModal(modal) {
+  const modalOverlay = document.querySelector(".modal_opened");
   document.removeEventListener("keydown", closeWithEsc);
   modalOverlay.removeEventListener("click", closeWithClick);
   modal.classList.remove("modal_opened");
 }
 
 function openModal(modal) {
+  const modalOverlay = document.querySelector(".modal_opened");
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeWithEsc);
   modalOverlay.addEventListener("click", closeWithClick);

@@ -1,3 +1,5 @@
+import Card from "../components/Card";
+
 const initialCards = [
   {
     title: "Yosemite Valley",
@@ -93,8 +95,8 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
 
-  const likeButton = cardElement.querySelector(".heart-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
+  // const likeButton = cardElement.querySelector(".heart-button");
+  // const deleteButton = cardElement.querySelector(".card__delete-button");
 
   cardImageEl.addEventListener("click", () => {
     openModal(imagePreviewModal);
@@ -103,13 +105,13 @@ function getCardElement(cardData) {
     imagePreviewTitle.textContent = cardTitleEl.textContent;
   });
 
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  // deleteButton.addEventListener("click", () => {
+  //   cardElement.remove();
+  // });
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("heart-button_active");
-  });
+  // likeButton.addEventListener("click", () => {
+  //   likeButton.classList.toggle("heart-button_active");
+  // });
 
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.title;

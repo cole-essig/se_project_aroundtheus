@@ -1,8 +1,9 @@
 export default class Card {
-  constructor({ name, link }, cardSelector) {
+  constructor({ name, link }, cardSelector, handleImageClick) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
+    this._handleImageClick = handleImageClick;
   }
 
   _setEventListeners() {
@@ -18,6 +19,10 @@ export default class Card {
       .addEventListener("click", () => {
         this._handleDeleteCard();
       });
+    // handleImageClick
+    this._cardImageEl.addEventListener("click", () => {
+      this._handleImageClick(this);
+    });
   }
   // EVENT LISTENER PRIVATE FUNCTIONS
   _handleHeartButton() {
@@ -31,14 +36,20 @@ export default class Card {
     this._cardElement = null;
   }
 
-  // DISPLAY OF CARD
+  // DISPLAY OF CARD PUBLIC FUNCTION
   getCardView() {
     this._cardElement = document
       .querySelector(this._cardSelector)
       .cloneNode(true);
+    this._cardImageEl = _cardElement.querySelector(".card__image");
+    this._cardTitleEl = _cardElement.querySelector(".card__title");
 
     this._setEventListeners();
 
-    return Card;
+    this._cardImageEl.src = this._link;
+    this._cardImageEl.alt = this._name;
+    this._cardTitleEl.textContent = this._name;
+
+    return this;
   }
 }

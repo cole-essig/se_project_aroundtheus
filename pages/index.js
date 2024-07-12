@@ -152,6 +152,26 @@ function fillProfileForm() {
   profileNameInput.value = profileName.textContent.trim();
   profileBadgeInput.value = profileBadge.textContent;
 }
+
+/* Validation */
+
+// const validationSettings = {
+//   formSelector: ".modal__form",
+//   inputSelector: ".modal__input",
+//   submitButtonSelector: ".modal__button",
+//   inactiveButtonClass: "modal__button_disabled",
+//   inputErrorClass: "modal__input_type_error",
+//   errorClass: "modal__error_visible",
+// };
+// const editFormValidator = new FormValidator(
+//   validationSettings,
+//   profileEditForm
+// );
+// const addFormValidator = new FormValidator(validationSettings, addNewCardForm);
+
+// editFormValidator._enableValidation();
+// addFormValidator._enableValidation();
+
 /* EVENT HANDLERS */
 
 function handleProfileEditSubmit(e) {

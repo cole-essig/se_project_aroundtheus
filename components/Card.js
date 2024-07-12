@@ -58,6 +58,6 @@ export default class Card {
     this._cardImageEl.alt = this._name;
     this._cardTitleEl.textContent = this._name;
 
-    return this._cardElement;
+    return this._cardElement.cloneNode(true);
   }
 }

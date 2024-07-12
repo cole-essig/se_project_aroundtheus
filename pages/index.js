@@ -143,6 +143,11 @@ function makeCard(cardData) {
   return card.generateCard();
 }
 
+function renderCard(cardData) {
+  const cardBlock = makeCard(cardData);
+  cardDivEl.prepend(cardBlock);
+}
+
 function fillProfileForm() {
   profileNameInput.value = profileName.textContent.trim();
   profileBadgeInput.value = profileBadge.textContent;

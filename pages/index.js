@@ -32,6 +32,11 @@ const initialCards = [
   },
 ];
 
+const cardData = {
+  title: "Yosemite Valley",
+  link: "https://images.unsplash.com/photo-1516687401797-25297ff1462c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8eW9zZW1pdGUlMjBuYXRpb25hbCUyMHBhcmt8ZW58MHx8MHx8fDA%3D",
+};
+
 /* ELEMENTS */
 //  PROFILE ELEMENTS
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -46,7 +51,7 @@ const profileEditForm = profileEditModal.querySelector("#modal-form-1");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardDivEl = document.querySelector(".cards");
-const cardImageEl = cardTemplate.querySelector(".card__image");
+// const cardImageEl = cardTemplate.querySelector(".card__image");
 // CARD ADD BUTTON ELEMENTS
 const cardAddButton = document.querySelector("#card-add-button");
 const cardAddModal = document.querySelector("#card-add-modal");
@@ -61,8 +66,6 @@ const imagePreviewSrc = document.querySelector("#modal-preview-image-src");
 const imagePreviewTitle = document.querySelector(".modal__image-preview_text");
 
 /* FUNCTIONS */
-
-function populatePage() {}
 
 function closeWithEsc(e) {
   if (e.key === "Escape") {
@@ -123,15 +126,21 @@ function openModal(modal) {
 //   likeButton.classList.toggle("heart-button_active");
 // });
 
-//   cardImageEl.src = cardData.link;
-//   cardImageEl.alt = cardData.title;
+// const cardData = {
+//   title: "Yosemite Valley",
+//   link: "https://images.unsplash.com/photo-1516687401797-25297ff1462c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8eW9zZW1pdGUlMjBuYXRpb25hbCUyMHBhcmt8ZW58MHx8MHx8fDA%3D",
+// };
+// cardImageEl.src = cardData.link;
+// cardImageEl.alt = cardData.title;
+
+// console.log(cardImageEl);
 //   cardTitleEl.textContent = cardData.title;
 //   return cardElement;
 // }
 
-function renderCard(Card) {
-  const cardElement = Card;
-  cardDivEl.prepend(cardElement);
+function makeCard(cardData) {
+  const card = new Card(cardData, cardTemplate, handleImageClick);
+  return card.generateCard();
 }
 
 function fillProfileForm() {
@@ -183,6 +192,7 @@ cardAddForm.addEventListener("submit", handleCardAddSubmit);
 
 /*loops*/
 
-initialCards.forEach((cardData) =>
-  renderCard(new Card(cardData, cardTemplate, handleImageClick()))
-);
+initialCards.forEach((cardData) => {
+  const cardBlock = makeCard(cardData);
+  cardDivEl.prepend(cardBlock);
+});

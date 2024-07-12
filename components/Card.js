@@ -8,8 +8,9 @@ export default class Card {
 
   _setEventListeners() {
     // card like button
+    console.log(this._cardElement);
     this._cardElement
-      .querySelector("heart-button")
+      .querySelector(".heart-button")
       .addEventListener("click", () => {
         this._handleHeartButton();
       });
@@ -24,6 +25,7 @@ export default class Card {
       this._handleImageClick(this);
     });
   }
+
   // EVENT LISTENER PRIVATE FUNCTIONS
   _handleHeartButton() {
     this._cardElement
@@ -35,14 +37,20 @@ export default class Card {
     this._cardElement.remove();
     this._cardElement = null;
   }
-
+  // TEMPLATE
+  // _getTemplate() {
+  //   const cardElement = document
+  //     .querySelector(this._cardSelector)
+  //     .content.querySelector(".card")
+  //     .cloneNode(true);
+  //   return cardElement;
+  // }
   // DISPLAY OF CARD PUBLIC FUNCTION
-  getCardView() {
-    this._cardElement = document
-      .querySelector(this._cardSelector)
-      .cloneNode(true);
-    this._cardImageEl = _cardElement.querySelector(".card__image");
-    this._cardTitleEl = _cardElement.querySelector(".card__title");
+
+  generateCard() {
+    this._cardElement = this._cardSelector;
+    this._cardImageEl = this._cardElement.querySelector(".card__image");
+    this._cardTitleEl = this._cardElement.querySelector(".card__title");
 
     this._setEventListeners();
 
@@ -50,6 +58,6 @@ export default class Card {
     this._cardImageEl.alt = this._name;
     this._cardTitleEl.textContent = this._name;
 
-    return this;
+    return this._cardElement;
   }
 }

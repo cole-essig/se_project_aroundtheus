@@ -1,4 +1,5 @@
 import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -51,7 +52,6 @@ const profileEditForm = profileEditModal.querySelector("#modal-form-1");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardDivEl = document.querySelector(".cards");
-// const cardImageEl = cardTemplate.querySelector(".card__image");
 // CARD ADD BUTTON ELEMENTS
 const cardAddButton = document.querySelector("#card-add-button");
 const cardAddModal = document.querySelector("#card-add-modal");
@@ -62,8 +62,6 @@ const cardAddForm = cardAddModal.querySelector("#modal-form-2");
 // IMAGE MODAL PREVIEW
 const imagePreviewModal = document.querySelector("#image-preview-modal");
 const imagePreviewModalClose = document.querySelector("#image-modal-close");
-const imagePreviewSrc = document.querySelector("#modal-preview-image-src");
-const imagePreviewTitle = document.querySelector(".modal__image-preview_text");
 
 /* FUNCTIONS */
 
@@ -103,41 +101,6 @@ function openModal(modal) {
   modalOverlay.addEventListener("click", closeWithClick);
 }
 
-// function getCardElement(cardData) {
-//   const cardElement = cardTemplate.cloneNode(true);
-//   const cardImageEl = cardElement.querySelector(".card__image");
-//   const cardTitleEl = cardElement.querySelector(".card__title");
-
-//   // const likeButton = cardElement.querySelector(".heart-button");
-// const deleteButton = cardElement.querySelector(".card__delete-button");
-
-// cardImageEl.addEventListener("click", () => {
-//   openModal(imagePreviewModal);
-//   imagePreviewSrc.src = cardImageEl.src;
-//   imagePreviewSrc.alt = `Photo of ${cardData.name}`;
-//   imagePreviewTitle.textContent = cardTitleEl.textContent;
-// });
-
-// deleteButton.addEventListener("click", () => {
-//   cardElement.remove();
-// });
-
-// likeButton.addEventListener("click", () => {
-//   likeButton.classList.toggle("heart-button_active");
-// });
-
-// const cardData = {
-//   title: "Yosemite Valley",
-//   link: "https://images.unsplash.com/photo-1516687401797-25297ff1462c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8eW9zZW1pdGUlMjBuYXRpb25hbCUyMHBhcmt8ZW58MHx8MHx8fDA%3D",
-// };
-// cardImageEl.src = cardData.link;
-// cardImageEl.alt = cardData.title;
-
-// console.log(cardImageEl);
-//   cardTitleEl.textContent = cardData.title;
-//   return cardElement;
-// }
-
 function makeCard(cardData) {
   const card = new Card(cardData, cardTemplate, handleImageClick);
   return card.generateCard();
@@ -155,22 +118,22 @@ function fillProfileForm() {
 
 /* Validation */
 
-// const validationSettings = {
-//   formSelector: ".modal__form",
-//   inputSelector: ".modal__input",
-//   submitButtonSelector: ".modal__button",
-//   inactiveButtonClass: "modal__button_disabled",
-//   inputErrorClass: "modal__input_type_error",
-//   errorClass: "modal__error_visible",
-// };
-// const editFormValidator = new FormValidator(
-//   validationSettings,
-//   profileEditForm
-// );
-// const addFormValidator = new FormValidator(validationSettings, addNewCardForm);
+const validationSettings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+const editFormValidator = new FormValidator(
+  validationSettings,
+  profileEditForm
+);
+const addFormValidator = new FormValidator(validationSettings, cardAddForm);
 
-// editFormValidator._enableValidation();
-// addFormValidator._enableValidation();
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 /* EVENT HANDLERS */
 

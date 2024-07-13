@@ -1,6 +1,6 @@
 export default class Card {
-  constructor({ name, link }, cardSelector, handleImageClick) {
-    this._name = name;
+  constructor({ title, link }, cardSelector, handleImageClick) {
+    this._title = title;
     this._link = link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
@@ -8,7 +8,6 @@ export default class Card {
 
   _setEventListeners() {
     // card like button
-    console.log(this._cardElement);
     this._cardElement
       .querySelector(".heart-button")
       .addEventListener("click", () => {
@@ -37,6 +36,7 @@ export default class Card {
     this._cardElement.remove();
     this._cardElement = null;
   }
+
   // TEMPLATE
   // _getTemplate() {
   //   const cardElement = document
@@ -45,6 +45,7 @@ export default class Card {
   //     .cloneNode(true);
   //   return cardElement;
   // }
+
   // DISPLAY OF CARD PUBLIC FUNCTION
 
   generateCard() {
@@ -55,8 +56,8 @@ export default class Card {
     this._setEventListeners();
 
     this._cardImageEl.src = this._link;
-    this._cardImageEl.alt = this._name;
-    this._cardTitleEl.textContent = this._name;
+    this._cardImageEl.alt = this._title;
+    this._cardTitleEl.textContent = this._title;
 
     return this._cardElement.cloneNode(true);
   }

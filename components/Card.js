@@ -8,17 +8,17 @@ export default class Card {
 
   _setEventListeners() {
     // card like button
-    this._cardElement
-      .querySelector(".heart-button")
-      .addEventListener("click", () => {
-        this._handleHeartButton();
-      });
+    let heart = this._cardElement.querySelector(".heart-button");
+    heart.addEventListener("click", () => {
+      this._handleHeartButton();
+      console.log(this._cardElement);
+    });
+
     // card delete button
-    this._cardElement
-      .querySelector(".card__delete-button")
-      .addEventListener("click", () => {
-        this._handleDeleteCard();
-      });
+    let deleteButton = this._cardElement.querySelector(".card__delete-button");
+    deleteButton.addEventListener("click", () => {
+      this._handleDeleteCard();
+    });
     // handleImageClick
     this._cardImageEl.addEventListener("click", () => {
       this._handleImageClick(this);
@@ -49,7 +49,7 @@ export default class Card {
   // DISPLAY OF CARD PUBLIC FUNCTION
 
   generateCard() {
-    this._cardElement = this._cardSelector;
+    this._cardElement = this._cardSelector.cloneNode(true);
     this._cardImageEl = this._cardElement.querySelector(".card__image");
     this._cardTitleEl = this._cardElement.querySelector(".card__title");
 
@@ -59,6 +59,6 @@ export default class Card {
     this._cardImageEl.alt = this._title;
     this._cardTitleEl.textContent = this._title;
 
-    return this._cardElement.cloneNode(true);
+    return this._cardElement;
   }
 }

@@ -130,10 +130,10 @@ const editFormValidator = new FormValidator(
   validationSettings,
   profileEditForm
 );
-const addFormValidator = new FormValidator(validationSettings, cardAddForm);
+const cardFormValidator = new FormValidator(validationSettings, cardAddForm);
 
 editFormValidator.enableValidation();
-addFormValidator.enableValidation();
+cardFormValidator.enableValidation();
 
 /* EVENT HANDLERS */
 
@@ -156,11 +156,13 @@ function handleCardAddSubmit(e) {
 /* EVENT LISTENERS */
 // OPEN MODAL
 profileEditButton.addEventListener("click", () => {
+  editFormValidator.resetValidation();
   fillProfileForm();
   openModal(profileEditModal);
 });
 
 cardAddButton.addEventListener("click", () => {
+  cardFormValidator.resetValidation();
   openModal(cardAddModal);
 });
 

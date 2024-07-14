@@ -62,7 +62,8 @@ const cardAddForm = cardAddModal.querySelector("#modal-form-2");
 // IMAGE MODAL PREVIEW
 const imagePreviewModal = document.querySelector("#image-preview-modal");
 const imagePreviewModalClose = document.querySelector("#image-modal-close");
-
+const imagePreviewPicture = document.querySelector("#modal-preview-image-src");
+const imagePreviewText = document.querySelector(".modal__image-preview_text");
 /* FUNCTIONS */
 
 function closeWithEsc(e) {
@@ -82,9 +83,9 @@ function closeWithClick(e) {
 
 function handleImageClick() {
   openModal(imagePreviewModal);
-  imagePreviewSrc.src = cardImageEl.src;
-  imagePreviewSrc.alt = `Photo of ${cardData.name}`;
-  imagePreviewTitle.textContent = cardTitleEl.textContent;
+  imagePreviewPicture.src = this._link;
+  imagePreviewPicture.alt = `Photo of ${this._title}`;
+  imagePreviewText.textContent = this._title;
 }
 
 function closeModal(modal) {

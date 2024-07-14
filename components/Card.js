@@ -37,15 +37,6 @@ export default class Card {
     this._cardElement = null;
   }
 
-  // TEMPLATE
-  // _getTemplate() {
-  //   const cardElement = document
-  //     .querySelector(this._cardSelector)
-  //     .content.querySelector(".card")
-  //     .cloneNode(true);
-  //   return cardElement;
-  // }
-
   // DISPLAY OF CARD PUBLIC FUNCTION
 
   generateCard() {

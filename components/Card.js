@@ -8,20 +8,22 @@ export default class Card {
 
   _setEventListeners() {
     // card like button
-    let heart = this._cardElement.querySelector(".heart-button");
+    const heart = this._cardElement.querySelector(".heart-button");
     heart.addEventListener("click", () => {
       this._handleHeartButton();
       console.log(this._cardElement);
     });
 
     // card delete button
-    let deleteButton = this._cardElement.querySelector(".card__delete-button");
+    const deleteButton = this._cardElement.querySelector(
+      ".card__delete-button"
+    );
     deleteButton.addEventListener("click", () => {
       this._handleDeleteCard();
     });
     // handleImageClick
     this._cardImageEl.addEventListener("click", () => {
-      this._handleImageClick(this);
+      this._handleImageClick(this._title, this._link);
     });
   }
 

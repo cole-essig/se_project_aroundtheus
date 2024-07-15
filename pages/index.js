@@ -74,32 +74,30 @@ function closeWithEsc(e) {
 }
 
 function closeWithClick(e) {
-  if (e.target != this) {
+  const openedModal = document.querySelector(".modal_opened");
+  if (e.target != openModal) {
     return;
   }
-  const openedModal = document.querySelector(".modal_opened");
   closeModal(openedModal);
 }
 
-function handleImageClick() {
+function handleImageClick(title, link) {
   openModal(imagePreviewModal);
-  imagePreviewPicture.src = this._link;
-  imagePreviewPicture.alt = `Photo of ${this._title}`;
-  imagePreviewText.textContent = this._title;
+  imagePreviewPicture.src = link;
+  imagePreviewPicture.alt = `Photo of ${title}`;
+  imagePreviewText.textContent = title;
 }
 
 function closeModal(modal) {
-  const modalOverlay = document.querySelector(".modal_opened");
   document.removeEventListener("keydown", closeWithEsc);
-  modalOverlay.removeEventListener("click", closeWithClick);
+  modal.removeEventListener("click", closeWithClick);
   modal.classList.remove("modal_opened");
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  const modalOverlay = document.querySelector(".modal_opened");
   document.addEventListener("keydown", closeWithEsc);
-  modalOverlay.addEventListener("click", closeWithClick);
+  modal.addEventListener("click", closeWithClick);
 }
 
 function makeCard(cardData) {
@@ -143,6 +141,7 @@ function handleProfileEditSubmit(e) {
   profileName.textContent = profileNameInput.value;
   profileBadge.textContent = profileBadgeInput.value;
   closeModal(profileEditModal);
+  editFormValidator.resetValidation();
 }
 
 function handleCardAddSubmit(e) {
@@ -151,19 +150,17 @@ function handleCardAddSubmit(e) {
   const link = cardUrlInput.value;
   renderCard({ title, link });
   closeModal(cardAddModal);
-  cardAddForm.reset();
+  cardFormValidator.resetValidation();
 }
 
 /* EVENT LISTENERS */
 // OPEN MODAL
 profileEditButton.addEventListener("click", () => {
-  editFormValidator.resetValidation();
   fillProfileForm();
   openModal(profileEditModal);
 });
 
 cardAddButton.addEventListener("click", () => {
-  cardFormValidator.resetValidation();
   openModal(cardAddModal);
 });
 

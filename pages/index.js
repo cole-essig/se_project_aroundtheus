@@ -74,11 +74,9 @@ function closeWithEsc(e) {
 }
 
 function closeWithClick(e) {
-  const openedModal = document.querySelector(".modal_opened");
-  if (e.target != openModal) {
-    return;
+  if (e.target === e.currentTarget) {
+    closeModal(e.currentTarget);
   }
-  closeModal(openedModal);
 }
 
 function handleImageClick(title, link) {

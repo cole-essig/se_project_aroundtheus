@@ -66,37 +66,37 @@ const imagePreviewPicture = document.querySelector("#modal-preview-image-src");
 const imagePreviewText = document.querySelector(".modal__image-preview_text");
 /* FUNCTIONS */
 
-function closeWithEsc(e) {
-  if (e.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    closeModal(openedModal);
-  }
-}
+// function closeWithEsc(e) {
+//   if (e.key === "Escape") {
+//     const openedModal = document.querySelector(".modal_opened");
+//     closeModal(openedModal);
+//   }
+// }
 
-function closeWithClick(e) {
-  if (e.target === e.currentTarget) {
-    closeModal(e.currentTarget);
-  }
-}
+// function closeWithClick(e) {
+//   if (e.target === e.currentTarget) {
+//     closeModal(e.currentTarget);
+//   }
+// }
 
-function handleImageClick(title, link) {
-  openModal(imagePreviewModal);
-  imagePreviewPicture.src = link;
-  imagePreviewPicture.alt = `Photo of ${title}`;
-  imagePreviewText.textContent = title;
-}
+// function handleImageClick(title, link) {
+//   openModal(imagePreviewModal);
+//   imagePreviewPicture.src = link;
+//   imagePreviewPicture.alt = `Photo of ${title}`;
+//   imagePreviewText.textContent = title;
+// }
 
-function closeModal(modal) {
-  document.removeEventListener("keydown", closeWithEsc);
-  modal.removeEventListener("click", closeWithClick);
-  modal.classList.remove("modal_opened");
-}
+// function closeModal(modal) {
+//   document.removeEventListener("keydown", closeWithEsc);
+//   modal.removeEventListener("click", closeWithClick);
+//   modal.classList.remove("modal_opened");
+// }
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeWithEsc);
-  modal.addEventListener("click", closeWithClick);
-}
+// function openModal(modal) {
+//   modal.classList.add("modal_opened");
+//   document.addEventListener("keydown", closeWithEsc);
+//   modal.addEventListener("click", closeWithClick);
+// }
 
 function makeCard(cardData) {
   const card = new Card(cardData, cardTemplate, handleImageClick);
@@ -108,10 +108,10 @@ function renderCard(cardData) {
   cardDivEl.prepend(cardBlock);
 }
 
-function fillProfileForm() {
-  profileNameInput.value = profileName.textContent.trim();
-  profileBadgeInput.value = profileBadge.textContent;
-}
+// function fillProfileForm() {
+//   profileNameInput.value = profileName.textContent.trim();
+//   profileBadgeInput.value = profileBadge.textContent;
+// }
 
 /* Validation */
 
@@ -163,14 +163,15 @@ cardAddButton.addEventListener("click", () => {
 });
 
 // CLOSE MODAL
-profileButtonModalClose.addEventListener("click", () =>
-  closeModal(profileEditModal)
-);
-cardButtonModalClose.addEventListener("click", () => closeModal(cardAddModal));
 
-imagePreviewModalClose.addEventListener("click", () =>
-  closeModal(imagePreviewModal)
-);
+// profileButtonModalClose.addEventListener("click", () =>
+//   closeModal(profileEditModal)
+// );
+// cardButtonModalClose.addEventListener("click", () => closeModal(cardAddModal));
+
+// imagePreviewModalClose.addEventListener("click", () =>
+//   closeModal(imagePreviewModal)
+// );
 
 // SUBMIT FORM
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);

@@ -62,8 +62,8 @@ const cardAddForm = cardAddModal.querySelector("#modal-form-2");
 // IMAGE MODAL PREVIEW
 const imagePreviewModal = document.querySelector("#image-preview-modal");
 const imagePreviewModalClose = document.querySelector("#image-modal-close");
-const imagePreviewPicture = document.querySelector("#modal-preview-image-src");
-const imagePreviewText = document.querySelector(".modal__image-preview_text");
+// const imagePreviewPicture = document.querySelector("#modal-preview-image-src");
+// const imagePreviewText = document.querySelector(".modal__image-preview_text");
 /* FUNCTIONS */
 
 // function closeWithEsc(e) {
@@ -134,18 +134,16 @@ cardFormValidator.enableValidation();
 
 /* EVENT HANDLERS */
 
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
-  profileName.textContent = profileNameInput.value;
-  profileBadge.textContent = profileBadgeInput.value;
+function handleProfileEditSubmit({ name, badge }) {
+  profileName.textContent = name;
+  profileBadge.textContent = badge;
   closeModal(profileEditModal);
   editFormValidator.resetValidation();
 }
 
-function handleCardAddSubmit(e) {
-  e.preventDefault();
-  const title = cardTitleIput.value;
-  const link = cardUrlInput.value;
+function handleCardAddSubmit({ title, link }) {
+  const title = title;
+  const link = link;
   renderCard({ title, link });
   closeModal(cardAddModal);
   cardFormValidator.resetValidation();

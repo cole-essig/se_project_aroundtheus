@@ -3,7 +3,6 @@ import FormValidator from "../components/FormValidator.js";
 import Modal from "../components/Modal.js";
 import PopupWithForm from "../components/ModalWithForm.js";
 import ModalWithForm from "../components/ModalWithForm.js";
-import PopupWithImage from "../components/ModalWithImage.js";
 import ModalWithImage from "../components/ModalWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
@@ -73,29 +72,29 @@ const imagePreviewModalClose = document.querySelector("#image-modal-close");
 // const imagePreviewText = document.querySelector(".modal__image-preview_text");
 
 // Edit Profile Modal
-const editProfileModal = new PopupWithForm(
+const editProfileModal = new ModalWithForm(
   "#profile-edit-modal",
   handleProfileEditSubmit
 );
 editProfileModal.setEventListeners();
 
 //New Card Modal
-const newCardModal = new PopupWithForm("#card-add-modal", handleCardAddSubmit);
+const newCardModal = new ModalWithForm("#card-add-modal", handleCardAddSubmit);
 newCardModal.setEventListeners();
 
 //Preview Image Popup
-const PreviewImageModal = new ModalWithImage("#oimage-preview-modal");
+const PreviewImageModal = new ModalWithImage("#image-preview-modal");
 PreviewImageModal.setEventListeners();
 
 // Sections Class
 const section = new Section(
   {
-    item: initialCards,
+    items: initialCards,
     renderer: (item) => {
-      section.addItem(createCard(item));
+      section.addItem(makeCard(item));
     },
   },
-  cardDivEl
+  ".cards"
 );
 section.renderItems();
 
@@ -137,6 +136,10 @@ const user = new UserInfo({
 //   document.addEventListener("keydown", closeWithEsc);
 //   modal.addEventListener("click", closeWithClick);
 // }
+
+function handleImageClick(title, link) {
+  imagePreviewModal.open(title, link);
+}
 
 function makeCard(cardData) {
   const card = new Card(cardData, cardTemplate, handleImageClick);

@@ -1,6 +1,6 @@
 import Modal from "./Modal.js";
 
-export default class PopupWithForm extends Popup {
+export default class ModalWithForm extends Modal {
   constructor(modalSelector, handleFormSubmit) {
     super(modalSelector);
     this._modalForm = this._modal.querySelector(".modal__form");
@@ -9,7 +9,7 @@ export default class PopupWithForm extends Popup {
   }
 
   close() {
-    this._popupForm.reset();
+    this._modalForm.reset();
     super.closeModal(this._modal);
   }
 

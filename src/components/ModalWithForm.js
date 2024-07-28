@@ -10,7 +10,7 @@ export default class ModalWithForm extends Modal {
 
   close() {
     this._modalForm.reset();
-    super.closeModal(this._modal);
+    super.close(this._modal);
   }
 
   _getInputValues() {
@@ -22,6 +22,7 @@ export default class ModalWithForm extends Modal {
   }
 
   setEventListeners() {
+    super.setEventListeners();
     this._modalForm.addEventListener("submit", (e) => {
       e.preventDefault();
       this._handleFormSubmit(this._getInputValues());

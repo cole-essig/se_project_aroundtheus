@@ -1,38 +1,45 @@
 export default class Modal {
   constructor(modalSelector) {
-    this._modal = document.querySelector(modalSelector);
     this._modalSelector = modalSelector;
+    this._modal = document.querySelector(this._modalSelector);
+    this._closeWithEsc = this._closeWithEsc.bind(this);
+    this._closeWithClick = this._closeWithClick.bind(this);
   }
 
-  openModal() {
+  open() {
     this._modal.classList.add("modal_opened");
-    document.addEventListener("keydown", closeWithEsc);
-    this._modal.addEventListener("click", closeWithClick);
+    document.addEventListener("keydown", this._closeWithEsc);
+    this._modal.addEventListener("click", this._closeWithClick);
   }
 
-  closeModal() {
-    document.removeEventListener("keydown", closeWithEsc);
-    this._modal.removeEventListener("click", closeWithClick);
+  close() {
+    document.removeEventListener("keydown", this._closeWithEsc);
+    this._modal.removeEventListener("click", this._closeWithClick);
     this._modal.classList.remove("modal_opened");
   }
 
-  // ADDS TO MODAL OPEN/CLOSE
   _closeWithEsc(e) {
     if (e.key === "Escape") {
-      const openedModal = document.querySelector(".modal_opened");
-      closeModal(openedModal);
+      this.close();
     }
   }
 
   _closeWithClick(e) {
     if (e.target === e.currentTarget) {
-      closeModal(e.currentTarget);
+      this.close();
     }
   }
 
-  // EVENT LISTNERS
   setEventListeners() {
     const modalCloseIcon = this._modal.querySelector(".modal__close");
-    modalCloseIcon.addEventListener("click", () => closeModal(this._modal));
+    console.log(modalCloseIcon);
+    if (modalCloseIcon) {
+      console.log("Close button found: ");
+      modalCloseIcon.addEventListener("click", () => {
+        console.log("Close button clicked");
+        this.close();
+      });
+    }
+    this._modal.addEventListener("mousedown", this._closeWithClick);
   }
 }

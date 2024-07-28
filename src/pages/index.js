@@ -142,7 +142,7 @@ const user = new UserInfo({
 // }
 
 function handleImageClick(title, link) {
-  imagePreviewModal.open(title, link);
+  PreviewImageModal.open(title, link);
 }
 
 function makeCard(cardData) {
@@ -201,11 +201,11 @@ profileEditButton.addEventListener("click", () => {
   const userInput = user.getUserInfo();
   profileNameInput.value = userInput.name;
   profileBadgeInput.value = userInput.badge;
-  editProfileModal.openModal();
+  editProfileModal.open();
 });
 
 cardAddButton.addEventListener("click", () => {
-  cardAddModal.openModal();
+  newCardModal.open();
   cardFormValidator._toggleButtonState();
 });
 

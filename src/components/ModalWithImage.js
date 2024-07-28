@@ -16,7 +16,7 @@ export default class ModalWithImage extends Modal {
     this._image.src = link;
     this._image.alt = title;
     this._text.textContent = title;
-    super.openModal();
+    super.open();
     super.setEventListeners();
   }
 }

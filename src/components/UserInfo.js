@@ -1,21 +1,18 @@
 export default class UserInfo {
-  constructor({ nameSelector, badgeSelector }) {
-    this._nameSection = nameSelector;
-    this._badgeSection = badgeSelector;
+  constructor(nameSelector, badgeSelector) {
+    this._name = document.querySelector(nameSelector);
+    this._badge = document.querySelector(badgeSelector);
   }
 
   getUserInfo() {
-    const userName = this._nameSection.textContent;
-    const userBadge = this._badgeSection.textContent;
-    let userInfo = {
-      name: userName,
-      badge: userBadge,
+    return {
+      name: this._name.textContent.trim(),
+      badge: this._badge.textContent,
     };
-    return userInfo;
   }
 
-  setUserInfo({ name, badge }) {
-    this._nameSection.textContent = name;
-    this._badgeSection.textContent = badge;
+  setUserInfo(name, badge) {
+    this._name.textContent = name;
+    this._badge.textContent = badge;
   }
 }

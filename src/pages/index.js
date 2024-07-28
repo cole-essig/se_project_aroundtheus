@@ -95,8 +95,13 @@ function handleProfileEditSubmit({ name, badge }) {
   editFormValidator.resetValidation();
 }
 
-function handleCardAddSubmit({ title, link }) {
-  section.addItem(makeCard({ title, link }));
+function handleCardAddSubmit({ name, cardUrl }) {
+  section.addItem(
+    makeCard({
+      title: name,
+      link: cardUrl,
+    })
+  );
   newCardModal.close();
   cardFormValidator.resetValidation();
 }

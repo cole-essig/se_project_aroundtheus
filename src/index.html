@@ -13,7 +13,6 @@
       content="A place to show off photos of the beauty of the US and to help share exploration"
     />
 
-    <link href="./pages/index.css" rel="stylesheet" />
     <link href="favicon.ico" rel="icon" />
 
     <title>Around the US</title>
@@ -23,7 +22,7 @@
       <div class="page__content">
         <header class="header">
           <img
-            src="./images/Logo-title.svg"
+            src="<%=require('./images/Logo-title.svg')%>"
             alt="Vector image title logo"
             class="header__logo"
           />
@@ -32,7 +31,7 @@
           <section class="profile">
             <div class="profile__info">
               <img
-                src="./images/jacques-cousteau.jpg"
+                src="<%=require('./images/jacques-cousteau.jpg')%>"
                 alt="Profile Picture of User"
                 class="profile__picture"
               />
@@ -47,7 +46,7 @@
                   id="profile-edit-button"
                 >
                   <img
-                    src="./images/edit-button.svg"
+                    src="<%=require('./images/edit-button.svg')%>"
                     alt="Small stylus showing an edit function"
                     class="edit-button__image"
                   />
@@ -62,7 +61,7 @@
               id="card-add-button"
             >
               <img
-                src="./images/add-button.svg"
+                src="<%=require('./images/add-button.svg')%>"
                 alt="Plus sign for the add picture button"
                 class="add-button__image"
               />
@@ -168,7 +167,7 @@
             type="button"
           >
             <img
-              src="./images/trash-can.svg"
+              src="<%=require('./images/trash-can.svg')%>"
               alt="Trash can shaped delete button"
               class="card__delete-button_image"
             />
@@ -180,7 +179,7 @@
             type="button"
           >
             <img
-              src="./images/heart-button.svg"
+              src="<%=require('./images/heart-button.svg')%>"
               alt="Heart shaped post interaction button"
               class="heart-button__image"
             />
@@ -188,7 +187,5 @@
         </div>
       </div>
     </template>
-
-    <script src="./pages/index.js" type="module"></script>
   </body>
 </html>

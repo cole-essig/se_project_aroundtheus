@@ -48,8 +48,8 @@ const newCardModal = new ModalWithForm("#card-add-modal", handleCardAddSubmit);
 newCardModal.setEventListeners();
 
 //Preview Image Popup
-const PreviewImageModal = new ModalWithImage("#image-preview-modal");
-PreviewImageModal.setEventListeners();
+const previewImageModal = new ModalWithImage("#image-preview-modal");
+previewImageModal.setEventListeners();
 
 // Sections Class
 const section = new Section(
@@ -69,7 +69,7 @@ const user = new UserInfo(".profile__name", ".profile__badge");
 /* FUNCTIONS */
 
 function handleImageClick(title, link) {
-  PreviewImageModal.open(title, link);
+  previewImageModal.open(title, link);
 }
 
 function makeCard(cardData) {
@@ -92,7 +92,6 @@ cardFormValidator.enableValidation();
 function handleProfileEditSubmit({ name, badge }) {
   user.setUserInfo(name, badge);
   editProfileModal.close();
-  editFormValidator.resetValidation();
 }
 
 function handleCardAddSubmit({ name, cardUrl }) {
@@ -103,14 +102,13 @@ function handleCardAddSubmit({ name, cardUrl }) {
     })
   );
   newCardModal.close();
-  cardFormValidator.resetValidation();
 }
 
 /* EVENT LISTENERS */
 // OPEN MODAL
 profileEditButton.addEventListener("click", () => {
   const userInput = user.getUserInfo();
-  console.log(user.getUserInfo());
+  editFormValidator.resetValidation();
   profileNameInput.value = userInput.name;
   profileBadgeInput.value = userInput.badge;
   editProfileModal.open();
@@ -118,5 +116,5 @@ profileEditButton.addEventListener("click", () => {
 
 cardAddButton.addEventListener("click", () => {
   newCardModal.open();
-  cardFormValidator._toggleButtonState();
+  cardFormValidator.toggleButtonState();
 });

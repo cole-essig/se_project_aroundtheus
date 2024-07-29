@@ -9,7 +9,6 @@ export default class ModalWithForm extends Modal {
   }
 
   close() {
-    this._modalForm.reset();
     super.close(this._modal);
   }
 

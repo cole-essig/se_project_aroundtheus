@@ -40,6 +40,5 @@ export default class Modal {
         this.close();
       });
     }
-    this._modal.addEventListener("mousedown", this._closeWithClick);
   }
 }

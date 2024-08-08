@@ -32,9 +32,7 @@ export default class Modal {
 
   setEventListeners() {
     const modalCloseIcon = this._modal.querySelector(".modal__close");
-    console.log(modalCloseIcon);
     if (modalCloseIcon) {
-      console.log("Close button found");
       modalCloseIcon.addEventListener("click", () => {
         console.log("Close button clicked");
         this.close();

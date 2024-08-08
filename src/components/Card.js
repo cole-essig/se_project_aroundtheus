@@ -1,9 +1,15 @@
 export default class Card {
-  constructor({ title, link }, cardSelector, handleImageClick) {
+  constructor(
+    { title, link },
+    cardSelector,
+    handleImageClick,
+    handleDeleteClick
+  ) {
     this._title = title;
     this._link = link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _setEventListeners() {
@@ -35,8 +41,7 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
+    this._handleDeleteClick;
   }
 
   // DISPLAY OF CARD PUBLIC FUNCTION

@@ -15,6 +15,7 @@ import Api from "../components/Api.js";
 
 /* ELEMENTS */
 //  PROFILE ELEMENTS
+const avatarPicture = document.querySelector(".profile__picture");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileButtonModalClose = document.querySelector("#profile-modal-close");
@@ -23,6 +24,8 @@ const profileBadge = document.querySelector("#profile-badge");
 const profileNameInput = document.querySelector("#profile-name-input");
 const profileBadgeInput = document.querySelector("#profile-badge-input");
 const profileEditForm = profileEditModal.querySelector("#modal-form-1");
+const avatarEditModal = document.querySelector("#avatar-change-modal");
+const avatarEditForm = avatarEditModal.querySelector("#modal-form-3");
 // CARD ELEMENTS
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
@@ -79,6 +82,12 @@ const deleteConfirmModal = new ModalWithConfirm(
   handleCardDeleteSubmit
 );
 deleteConfirmModal.setEventListeners();
+// Avatar Change Modal
+const avatarChangeModal = new ModalWithForm(
+  "#avatar-change-modal",
+  handleAvatarChangeSubmit
+);
+avatarChangeModal.setEventListeners();
 
 // Sections Class
 const section = new Section(
@@ -121,7 +130,12 @@ const editFormValidator = new FormValidator(
   profileEditForm
 );
 const cardFormValidator = new FormValidator(validationSettings, cardAddForm);
+const avatarFormValidator = new FormValidator(
+  validationSettings,
+  avatarEditForm
+);
 
+avatarFormValidator.enableValidation();
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 
@@ -146,6 +160,8 @@ function handleCardDeleteSubmit({ name, cardUrl }) {
   console.log({ name, cardUrl });
 }
 
+function handleAvatarChangeSubmit() {}
+
 /* EVENT LISTENERS */
 // OPEN MODAL
 profileEditButton.addEventListener("click", () => {
@@ -159,4 +175,9 @@ profileEditButton.addEventListener("click", () => {
 cardAddButton.addEventListener("click", () => {
   newCardModal.open();
   cardFormValidator.toggleButtonState();
+});
+
+avatarPicture.addEventListener("click", () => {
+  avatarChangeModal.open();
+  avatarFormValidator.toggleButtonState();
 });

@@ -25,7 +25,7 @@ export default class Card {
       ".card__delete-button"
     );
     deleteButton.addEventListener("click", () => {
-      this._handleDeleteCard();
+      this._handleDeleteClick();
     });
     // handleImageClick
     this._cardImageEl.addEventListener("click", () => {
@@ -38,10 +38,6 @@ export default class Card {
     this._cardElement
       .querySelector(".heart-button")
       .classList.toggle("heart-button_active");
-  }
-
-  _handleDeleteCard() {
-    this._handleDeleteClick;
   }
 
   // DISPLAY OF CARD PUBLIC FUNCTION

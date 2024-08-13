@@ -6,6 +6,10 @@ export default class ModalWithConfirm extends Modal {
     this._handleFormSubmit = handleFormSubmit;
   }
 
+  open() {
+    super.open(this._modal);
+  }
+
   close() {
     super.close(this._modal);
   }

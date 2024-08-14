@@ -40,7 +40,16 @@ const cardAddForm = cardAddModal.querySelector("#modal-form-2");
 // IMAGE MODAL PREVIEW
 const imagePreviewModal = document.querySelector("#image-preview-modal");
 const imagePreviewModalClose = document.querySelector("#image-modal-close");
-let section;
+let data;
+const section = new Section(
+  {
+    items: data,
+    renderer: (item) => {
+      section.addItem(makeCard(item));
+    },
+  },
+  ".cards"
+);
 
 // API
 const api = new Api({
@@ -54,16 +63,7 @@ const api = new Api({
 api
   .getIntitialCards()
   .then((data) => {
-    section = new Section(
-      {
-        items: data,
-        renderer: (item) => {
-          section.addItem(makeCard(item));
-        },
-      },
-      ".cards"
-    );
-    section.renderItems();
+    section.renderItems(data);
   })
   .catch((err) => {
     console.error(err);
@@ -171,8 +171,12 @@ function handleCardAddSubmit({ name, cardUrl }) {
 }
 
 function handleCardDeleteSubmit(cardId) {
-  console.log(cardId);
-  console.log("hi");
+  console.log(cardId._id);
+  api.deleteCard(cardId._id).then((message) => {
+    console.log(message);
+    // cardId.domDeleteCard();
+    deleteConfirmModal.close();
+  });
 }
 
 function handleAvatarChangeSubmit() {}

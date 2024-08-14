@@ -6,8 +6,9 @@ export default class ModalWithConfirm extends Modal {
     this.handleFormSubmit = handleFormSubmit;
   }
 
-  open(id) {
-    this.cardId = id;
+  open(card) {
+    this.cardId = card._id;
+
     super.open(this._modal);
   }
 

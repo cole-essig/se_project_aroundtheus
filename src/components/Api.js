@@ -29,4 +29,12 @@ export default class Api {
   loadPage(userInfo, cardInfo, avatarInfo) {
     return Promise.all(userInfo, cardInfo, avatarInfo);
   }
+
+  async deleteCard(cardId) {
+    const response = await fetch(this._baseUrl + "/cards/" + cardId._id, {
+      method: "DELETE",
+      headers: this._headers,
+    });
+    return await this._checkResponse(response);
+  }
 }

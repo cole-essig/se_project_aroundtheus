@@ -120,8 +120,9 @@ function makeCard(cardData) {
   return card.generateCard();
 }
 
-function handleDeleteClick() {
+function handleDeleteClick(cardId) {
   deleteConfirmModal.open();
+  console.log(cardId);
 }
 
 // VALIDATION
@@ -156,8 +157,9 @@ function handleCardAddSubmit({ name, cardUrl }) {
   newCardModal.close();
 }
 
-function handleCardDeleteSubmit({ name, cardUrl }) {
-  console.log({ name, cardUrl });
+function handleCardDeleteSubmit(card) {
+  console.log("hi");
+  handleDeleteClick.(this)
 }
 
 function handleAvatarChangeSubmit() {}

@@ -13,19 +13,17 @@ export default class Api {
   }
 
   async getIntitialCards() {
-    await fetch(this._baseUrl + "/cards", {
+    const response = await fetch(this._baseUrl + "/cards", {
       headers: this._headers,
-    }).then((res) => {
-      this._checkResponse(res);
     });
+    return await this._checkResponse(response);
   }
 
   async getUserInfo() {
-    await fetch(this._avatar + "/users/me", {
+    const response = await fetch(this._avatar + "/users/me", {
       headers: this._headers,
-    }).then((res) => {
-      return this._checkResponse(res);
     });
+    return await this._checkResponse(response);
   }
 
   loadPage(userInfo, cardInfo, avatarInfo) {

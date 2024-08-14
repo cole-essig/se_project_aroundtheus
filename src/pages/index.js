@@ -40,42 +40,34 @@ const cardAddForm = cardAddModal.querySelector("#modal-form-2");
 // IMAGE MODAL PREVIEW
 const imagePreviewModal = document.querySelector("#image-preview-modal");
 const imagePreviewModalClose = document.querySelector("#image-modal-close");
-let savedCardData = [];
-fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-  method: "GET",
+let section;
+
+// API
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
     authorization: "53632a1f-419c-4aa1-93c5-782b5878b96a",
     "Content-Type": "application/json",
   },
-})
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  })
+});
+
+api
+  .getIntitialCards()
   .then((data) => {
-    console.log(data);
-    return (savedCardData = data);
+    section = new Section(
+      {
+        items: data,
+        renderer: (item) => {
+          section.addItem(makeCard(item));
+        },
+      },
+      ".cards"
+    );
+    section.renderItems();
+  })
+  .catch((err) => {
+    console.error(err);
   });
-
-console.log(savedCardData);
-
-// API
-// const api = new Api({
-//   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-//   headers: {
-//     authorization: "53632a1f-419c-4aa1-93c5-782b5878b96a",
-//     "Content-Type": "application/json",
-//   },
-// });
-
-// api
-//   .getIntitialCards()
-//   .then((items) => {})
-//   .catch((err) => {
-//     console.error(err);
-//   });
 
 // api.getUserInfo().then((info) => {
 //   console.log(info);
@@ -110,17 +102,17 @@ const avatarChangeModal = new ModalWithForm(
 avatarChangeModal.setEventListeners();
 
 // Sections Class
-const section = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      section.addItem(makeCard(item));
-    },
-  },
-  ".cards"
-);
-console.log(section._items);
-section.renderItems();
+// const section = new Section(
+//   {
+//     items: savedCardData,
+//     renderer: (item) => {
+//       section.addItem(makeCard(item));
+//     },
+//   },
+//   ".cards"
+// );
+// console.log(section._items);
+// section.renderItems();
 
 //UserInfo Class
 const user = new UserInfo(".profile__name", ".profile__badge");

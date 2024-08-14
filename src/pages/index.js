@@ -40,6 +40,26 @@ const cardAddForm = cardAddModal.querySelector("#modal-form-2");
 // IMAGE MODAL PREVIEW
 const imagePreviewModal = document.querySelector("#image-preview-modal");
 const imagePreviewModalClose = document.querySelector("#image-modal-close");
+let savedCardData = [];
+fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+  method: "GET",
+  headers: {
+    authorization: "53632a1f-419c-4aa1-93c5-782b5878b96a",
+    "Content-Type": "application/json",
+  },
+})
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  })
+  .then((data) => {
+    console.log(data);
+    return (savedCardData = data);
+  });
+
+console.log(savedCardData);
 
 // API
 // const api = new Api({
@@ -99,6 +119,7 @@ const section = new Section(
   },
   ".cards"
 );
+console.log(section._items);
 section.renderItems();
 
 //UserInfo Class
@@ -121,8 +142,8 @@ function makeCard(cardData) {
 }
 
 function handleDeleteClick(cardId) {
-  deleteConfirmModal.open();
   console.log(cardId);
+  deleteConfirmModal.open(cardId);
 }
 
 // VALIDATION
@@ -157,9 +178,9 @@ function handleCardAddSubmit({ name, cardUrl }) {
   newCardModal.close();
 }
 
-function handleCardDeleteSubmit(card) {
+function handleCardDeleteSubmit(cardId) {
+  console.log(cardId);
   console.log("hi");
-  handleDeleteClick.(this)
 }
 
 function handleAvatarChangeSubmit() {}

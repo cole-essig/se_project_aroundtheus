@@ -1,11 +1,13 @@
 export default class Card {
   constructor(
-    { title, link },
+    { isLiked, _id, name, link },
     cardSelector,
     handleImageClick,
     handleDeleteClick
   ) {
-    this._title = title;
+    this._isLiked = isLiked;
+    this._id = _id;
+    this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
@@ -25,11 +27,11 @@ export default class Card {
       ".card__delete-button"
     );
     deleteButton.addEventListener("click", () => {
-      this._handleDeleteClick(this);
+      this._handleDeleteClick();
     });
     // handleImageClick
     this._cardImageEl.addEventListener("click", () => {
-      this._handleImageClick(this._title, this._link);
+      this._handleImageClick(this._name, this._link);
     });
   }
 

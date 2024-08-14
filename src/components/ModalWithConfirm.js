@@ -6,7 +6,8 @@ export default class ModalWithConfirm extends Modal {
     this.handleFormSubmit = handleFormSubmit;
   }
 
-  open() {
+  open(id) {
+    this.cardId = id;
     super.open(this._modal);
   }
 
@@ -18,7 +19,7 @@ export default class ModalWithConfirm extends Modal {
     super.setEventListeners();
     this._modal.addEventListener("submit", (e) => {
       e.preventDefault();
-      this.handleFormSubmit(this);
+      this.handleFormSubmit(this.cardId);
     });
   }
 }

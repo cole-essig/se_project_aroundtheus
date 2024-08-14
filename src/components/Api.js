@@ -20,7 +20,7 @@ export default class Api {
   }
 
   async getUserInfo() {
-    const response = await fetch(this._avatar + "/users/me", {
+    const response = await fetch(this._baseUrl + "/users/me", {
       headers: this._headers,
     });
     return await this._checkResponse(response);
@@ -31,7 +31,7 @@ export default class Api {
   }
 
   async deleteCard(cardId) {
-    const response = await fetch(this._baseUrl + "/cards/" + cardId._id, {
+    const response = await fetch(this._baseUrl + "/cards/" + cardId, {
       method: "DELETE",
       headers: this._headers,
     });

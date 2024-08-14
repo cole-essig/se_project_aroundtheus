@@ -69,9 +69,12 @@ api
     console.error(err);
   });
 
-// api.getUserInfo().then((info) => {
-//   console.log(info);
-// });
+api.getUserInfo().then((info) => {
+  console.log(info);
+  user.setUserInfo(info.name, info.about).catch((err) => {
+    console.error(err);
+  });
+});
 
 // Edit Profile Modal
 const editProfileModal = new ModalWithForm(
@@ -100,19 +103,6 @@ const avatarChangeModal = new ModalWithForm(
   handleAvatarChangeSubmit
 );
 avatarChangeModal.setEventListeners();
-
-// Sections Class
-// const section = new Section(
-//   {
-//     items: savedCardData,
-//     renderer: (item) => {
-//       section.addItem(makeCard(item));
-//     },
-//   },
-//   ".cards"
-// );
-// console.log(section._items);
-// section.renderItems();
 
 //UserInfo Class
 const user = new UserInfo(".profile__name", ".profile__badge");
@@ -170,11 +160,11 @@ function handleCardAddSubmit({ name, cardUrl }) {
   newCardModal.close();
 }
 
-function handleCardDeleteSubmit(cardId) {
-  console.log(cardId._id);
-  api.deleteCard(cardId._id).then((message) => {
+function handleCardDeleteSubmit(card) {
+  console.log(card._id);
+  api.deleteCard(card._id).then((message) => {
     console.log(message);
-    // cardId.domDeleteCard();
+    card.domDeleteCard();
     deleteConfirmModal.close();
   });
 }

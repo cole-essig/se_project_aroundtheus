@@ -12,6 +12,11 @@ export default class UserInfo {
     };
   }
 
+  setUserInfoOnSubmit(name, badge) {
+    this._name.textContent = name;
+    this._badge.textContent = badge;
+  }
+
   setUserInfo(name, badge, avatar) {
     this._name.textContent = name;
     this._badge.textContent = badge;

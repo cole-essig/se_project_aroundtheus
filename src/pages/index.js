@@ -135,7 +135,7 @@ cardFormValidator.enableValidation();
 /* EVENT HANDLERS */
 
 function handleProfileEditSubmit({ name, badge }) {
-  user.setUserInfo(name, badge);
+  user.setUserInfoOnSubmit(name, badge);
   api.updateProfile({ name, badge }).then((message) => {
     console.log(message);
   });

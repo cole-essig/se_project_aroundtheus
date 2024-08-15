@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor(nameSelector, badgeSelector) {
+  constructor(nameSelector, badgeSelector, avatarSelector) {
     this._name = document.querySelector(nameSelector);
     this._badge = document.querySelector(badgeSelector);
+    this._avatar = document.querySelector(avatarSelector);
   }
 
   getUserInfo() {
@@ -11,8 +12,13 @@ export default class UserInfo {
     };
   }
 
-  setUserInfo(name, badge) {
+  setUserInfo(name, badge, avatar) {
     this._name.textContent = name;
     this._badge.textContent = badge;
+    this._avatar.src = avatar;
+  }
+
+  setAvatarPic(avatarURl) {
+    this._avatar.src = avatarURl;
   }
 }

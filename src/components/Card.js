@@ -3,7 +3,8 @@ export default class Card {
     { isLiked, _id, name, link },
     cardSelector,
     handleImageClick,
-    handleDeleteClick
+    handleDeleteClick,
+    handleCardLike
   ) {
     this._isLiked = isLiked;
     this._id = _id;
@@ -12,6 +13,7 @@ export default class Card {
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
+    this._handleCardLike = handleCardLike;
   }
 
   _setEventListeners() {
@@ -19,6 +21,7 @@ export default class Card {
     const heart = this._cardElement.querySelector(".heart-button");
     heart.addEventListener("click", () => {
       this._handleHeartButton();
+      this._handleCardLike(this);
       console.log(this._cardElement);
     });
 

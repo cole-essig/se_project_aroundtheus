@@ -1,8 +1,4 @@
-import {
-  initialCards,
-  validationSettings,
-  cardData,
-} from "../utils/constants.js";
+import { validationSettings } from "../utils/constants.js";
 import "../pages/index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
@@ -15,12 +11,9 @@ import Api from "../components/Api.js";
 
 /* ELEMENTS */
 //  PROFILE ELEMENTS
-const avatarPicture = document.querySelector(".profile__picture");
+const avatarPicture = document.querySelector(".profile__avatar_edit-button");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileButtonModalClose = document.querySelector("#profile-modal-close");
-const profileName = document.querySelector("#profile-name");
-const profileBadge = document.querySelector("#profile-badge");
 const profileNameInput = document.querySelector("#profile-name-input");
 const profileBadgeInput = document.querySelector("#profile-badge-input");
 const profileEditForm = profileEditModal.querySelector("#modal-form-1");
@@ -33,19 +26,12 @@ const cardDivEl = document.querySelector(".cards");
 // CARD ADD BUTTON ELEMENTS
 const cardAddButton = document.querySelector("#card-add-button");
 const cardAddModal = document.querySelector("#card-add-modal");
-const cardButtonModalClose = document.querySelector("#card-modal-close");
-const cardTitleIput = document.querySelector("#card-title-input");
-const cardUrlInput = document.querySelector("#card-url-input");
 const cardAddForm = cardAddModal.querySelector("#modal-form-2");
-// IMAGE MODAL PREVIEW
-const imagePreviewModal = document.querySelector("#image-preview-modal");
-const imagePreviewModalClose = document.querySelector("#image-modal-close");
-let data;
-const section = new Section(
+// NEW SECTION CLASS FOR CARDS
+const cardSection = new Section(
   {
-    items: data,
     renderer: (item) => {
-      section.addItem(makeCard(item));
+      cardSection.addItem(makeCard(item));
     },
   },
   ".cards"
@@ -63,7 +49,7 @@ const api = new Api({
 api
   .getIntitialCards()
   .then((data) => {
-    section.renderItems(data);
+    cardSection.renderItems(data);
   })
   .catch((err) => {
     console.error(err);
@@ -71,9 +57,7 @@ api
 
 api.getUserInfo().then((info) => {
   console.log(info);
-  user.setUserInfo(info.name, info.about).catch((err) => {
-    console.error(err);
-  });
+  user.setUserInfo(info.name, info.about, info.avatar);
 });
 
 // Edit Profile Modal
@@ -104,8 +88,12 @@ const avatarChangeModal = new ModalWithForm(
 );
 avatarChangeModal.setEventListeners();
 
-//UserInfo Class
-const user = new UserInfo(".profile__name", ".profile__badge");
+//USER INFO CLASS
+const user = new UserInfo(
+  ".profile__name",
+  ".profile__badge",
+  ".profile__picture"
+);
 
 /* FUNCTIONS */
 
@@ -118,7 +106,8 @@ function makeCard(cardData) {
     cardData,
     cardTemplate,
     handleImageClick,
-    handleDeleteClick
+    handleDeleteClick,
+    handleCardLike
   );
   return card.generateCard();
 }
@@ -147,16 +136,22 @@ cardFormValidator.enableValidation();
 
 function handleProfileEditSubmit({ name, badge }) {
   user.setUserInfo(name, badge);
+  api.updateProfile({ name, badge }).then((message) => {
+    console.log(message);
+  });
   editProfileModal.close();
 }
 
 function handleCardAddSubmit({ name, cardUrl }) {
-  section.addItem(
+  cardSection.addItem(
     makeCard({
-      title: name,
+      name: name,
       link: cardUrl,
     })
   );
+  api.addCard({ name, cardUrl }).then((message) => {
+    console.log(message);
+  });
   newCardModal.close();
 }
 
@@ -169,7 +164,27 @@ function handleCardDeleteSubmit(card) {
   });
 }
 
-function handleAvatarChangeSubmit() {}
+function handleAvatarChangeSubmit(Url) {
+  console.log(Url.avatarUrl);
+  api.updateAvatar(Url.avatarUrl).then((res) => {
+    console.log(res);
+  });
+  user.setAvatarPic(Url.avatarUrl);
+  avatarChangeModal.close();
+}
+
+function handleCardLike(cardData) {
+  if (!cardData.isLiked) {
+    api.addLikes(cardData._id).then((res) => {
+      console.log(res);
+    });
+  } else {
+    api.removeLikes(cardData._id).then((res) => {
+      console.log(res);
+    });
+    console.log(cardData._id);
+  }
+}
 
 /* EVENT LISTENERS */
 // OPEN MODAL

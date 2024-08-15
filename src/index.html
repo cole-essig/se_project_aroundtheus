@@ -30,11 +30,20 @@
         <main>
           <section class="profile">
             <div class="profile__info">
-              <img
-                src="<%=require('./images/jacques-cousteau.jpg')%>"
-                alt="Profile Picture of User"
-                class="profile__picture"
-              />
+              <div class="profile__avatar_container">
+                <button class="profile__avatar_edit-button">
+                  <img
+                    src="<%=require('./images/edit-button.svg')%>"
+                    alt="Small stylus showing an edit function"
+                    class="edit-button__image-avatar"
+                  />
+                </button>
+                <img
+                  src=""
+                  alt="Profile Picture of User"
+                  class="profile__picture"
+                />
+              </div>
               <div class="profile__section">
                 <h1 class="profile__name" id="profile-name">
                   Jacques Cousteau
@@ -172,14 +181,14 @@
         <div class="modal__container">
           <div class="modal__content">
             <button class="modal__close" id="card-modal-close"></button>
-            <h2 class="modal__heading">New Place</h2>
+            <h2 class="modal__heading">Avatar Photo</h2>
             <form class="modal__form" id="modal-form-3">
               <input
                 type="url"
-                name="cardUrl"
+                name="avatarUrl"
                 class="modal__input"
                 placeholder="Image URL"
-                id="card-url-input"
+                id="image-url-input"
                 required
               />
               <span class="modal__error" id="card-url-input-error"></span>

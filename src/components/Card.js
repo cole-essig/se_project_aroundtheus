@@ -4,7 +4,8 @@ export default class Card {
     cardSelector,
     handleImageClick,
     handleDeleteClick,
-    handleCardLike
+    handleCardLike,
+    checkIfLiked
   ) {
     this._isLiked = isLiked;
     this._id = _id;
@@ -14,6 +15,7 @@ export default class Card {
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleCardLike = handleCardLike;
+    this._checkIfLiked = checkIfLiked;
   }
 
   _setEventListeners() {
@@ -22,7 +24,6 @@ export default class Card {
     heart.addEventListener("click", () => {
       this._handleHeartButton();
       this._handleCardLike(this);
-      console.log(this._cardElement);
     });
 
     // card delete button
@@ -40,6 +41,7 @@ export default class Card {
 
   // EVENT LISTENER PRIVATE FUNCTIONS
   _handleHeartButton() {
+    console.log(this._cardElement);
     this._cardElement
       .querySelector(".heart-button")
       .classList.toggle("heart-button_active");
@@ -63,6 +65,7 @@ export default class Card {
     this._cardImageEl.src = this._link;
     this._cardImageEl.alt = this._name;
     this._cardTitleEl.textContent = this._name;
+    this._checkIfLiked(this._isLiked, this._cardElement);
 
     return this._cardElement;
   }

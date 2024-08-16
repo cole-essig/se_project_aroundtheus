@@ -107,9 +107,18 @@ function makeCard(cardData) {
     cardTemplate,
     handleImageClick,
     handleDeleteClick,
-    handleCardLike
+    handleCardLike,
+    checkIfLiked
   );
   return card.generateCard();
+}
+
+function checkIfLiked(ifLiked, element) {
+  if (ifLiked === true) {
+    element
+      .querySelector(".heart-button")
+      .classList.toggle("heart-button_active");
+  }
 }
 
 function handleDeleteClick(cardId) {
@@ -174,7 +183,7 @@ function handleAvatarChangeSubmit(Url) {
 }
 
 function handleCardLike(cardData) {
-  if (!cardData.isLiked) {
+  if (cardData.isLiked === false) {
     api.addLikes(cardData._id).then((res) => {
       console.log(res);
     });

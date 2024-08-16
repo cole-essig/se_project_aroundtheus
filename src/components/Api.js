@@ -84,6 +84,14 @@ export default class Api {
     return await this._checkResponse(response);
   }
 
+  async checkLikesTruthy(cardId) {
+    const response = await fetch(this._baseUrl + "/cards/" + cardId, {
+      method: "GET",
+      headers: this._headers,
+    });
+    return await this._checkResponse(response);
+  }
+
   async updateAvatar(Url) {
     const response = await fetch(this._baseUrl + "/users/me/avatar", {
       method: "PATCH",

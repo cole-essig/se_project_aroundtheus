@@ -145,9 +145,13 @@ cardFormValidator.enableValidation();
 
 function handleProfileEditSubmit({ name, badge }) {
   user.setUserInfoOnSubmit(name, badge);
-  api.updateProfile({ name, badge }).then((message) => {
-    console.log(message);
-  });
+  editProfileModal.setLoading(true, "Saving...");
+  api
+    .updateProfile({ name, badge })
+    .then((message) => {
+      console.log(message);
+    })
+    .finally(editProfileModal.setLoading(false, "Saving..."));
   editProfileModal.close();
 }
 
@@ -158,9 +162,13 @@ function handleCardAddSubmit({ name, cardUrl }) {
       link: cardUrl,
     })
   );
-  api.addCard({ name, cardUrl }).then((message) => {
-    console.log(message);
-  });
+  newCardModal.setLoading(true, "Saving...");
+  api
+    .addCard({ name, cardUrl })
+    .then((message) => {
+      console.log(message);
+    })
+    .finally(newCardModal.setLoading(false, "Saving..."));
   newCardModal.close();
 }
 
@@ -175,9 +183,13 @@ function handleCardDeleteSubmit(card) {
 
 function handleAvatarChangeSubmit(Url) {
   console.log(Url.avatarUrl);
-  api.updateAvatar(Url.avatarUrl).then((res) => {
-    console.log(res);
-  });
+  avatarChangeModal.setLoading(true, "Saving...");
+  api
+    .updateAvatar(Url.avatarUrl)
+    .then((res) => {
+      console.log(res);
+    })
+    .finally(avatarChangeModal.setLoading(false, "Saving..."));
   user.setAvatarPic(Url.avatarUrl);
   avatarChangeModal.close();
 }

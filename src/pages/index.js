@@ -156,17 +156,18 @@ function handleProfileEditSubmit({ name, badge }) {
 }
 
 function handleCardAddSubmit({ name, cardUrl }) {
-  cardSection.addItem(
-    makeCard({
-      name: name,
-      link: cardUrl,
-    })
-  );
+  // cardSection.addItem(
+  //   makeCard({
+  //     name: name,
+  //     link: cardUrl,
+  //   })
+  // );
   newCardModal.setLoading(true, "Saving...");
   api
     .addCard({ name, cardUrl })
-    .then((message) => {
-      console.log(message);
+    .then((card) => {
+      console.log(card);
+      cardSection.addItem(makeCard(card));
     })
     .finally(newCardModal.setLoading(false, "Saving..."));
   newCardModal.close();

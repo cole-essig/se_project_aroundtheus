@@ -194,16 +194,16 @@ function handleAvatarChangeSubmit(Url) {
   avatarChangeModal.close();
 }
 
-function handleCardLike(cardData) {
-  if (cardData.isLiked === false) {
-    api.addLikes(cardData._id).then((res) => {
+function handleCardLike(cardId, isLiked) {
+  if (isLiked === false) {
+    api.removeLikes(cardId).then((res) => {
       console.log(res);
     });
   } else {
-    api.removeLikes(cardData._id).then((res) => {
+    api.addLikes(cardId).then((res) => {
       console.log(res);
     });
-    console.log(cardData._id);
+    console.log(cardId);
   }
 }
 

@@ -25,10 +25,6 @@ export default class Api {
     return await this._checkResponse(response);
   }
 
-  // loadPage(userInfo, cardInfo, avatarInfo) {
-  //   return Promise.all(userInfo, cardInfo, avatarInfo);
-  // }
-
   async deleteCard(cardId) {
     const response = await fetch(this._baseUrl + "/cards/" + cardId, {
       method: "DELETE",

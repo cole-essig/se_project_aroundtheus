@@ -23,7 +23,7 @@ export default class Card {
     const heart = this._cardElement.querySelector(".heart-button");
     heart.addEventListener("click", () => {
       this._handleHeartButton();
-      this._handleCardLike(this);
+      this._handleCardLike(this._id, this._heartButtonActivity());
     });
 
     // card delete button
@@ -45,6 +45,17 @@ export default class Card {
     this._cardElement
       .querySelector(".heart-button")
       .classList.toggle("heart-button_active");
+  }
+
+  _heartButtonActivity() {
+    const heartButton = this._cardElement.querySelector(".heart-button");
+    const truthy = true;
+    const falsey = false;
+    if (heartButton.classList.contains("heart-button_active")) {
+      return truthy;
+    } else {
+      return falsey;
+    }
   }
 
   // DELETEING CARDS ADDING LIKES

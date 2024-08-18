@@ -107,8 +107,7 @@ function makeCard(cardData) {
     cardTemplate,
     handleImageClick,
     handleDeleteClick,
-    handleCardLike,
-    checkIfLiked
+    handleCardLike
   );
   return card.generateCard();
 }
@@ -144,24 +143,23 @@ cardFormValidator.enableValidation();
 /* EVENT HANDLERS */
 
 function handleProfileEditSubmit({ name, badge }) {
-  user.setUserInfoOnSubmit(name, badge);
   editProfileModal.setLoading(true, "Saving...");
   api
     .updateProfile({ name, badge })
     .then((message) => {
       console.log(message);
+      user.setUserInfoOnSubmit(name, badge);
     })
-    .finally(editProfileModal.setLoading(false, "Saving..."));
-  editProfileModal.close();
+    .catch((err) => {
+      console.err(err);
+    })
+    .finally(() => {
+      editProfileModal.setLoading(false, "Save");
+      editProfileModal.close();
+    });
 }
 
 function handleCardAddSubmit({ name, cardUrl }) {
-  // cardSection.addItem(
-  //   makeCard({
-  //     name: name,
-  //     link: cardUrl,
-  //   })
-  // );
   newCardModal.setLoading(true, "Saving...");
   api
     .addCard({ name, cardUrl })
@@ -169,41 +167,70 @@ function handleCardAddSubmit({ name, cardUrl }) {
       console.log(card);
       cardSection.addItem(makeCard(card));
     })
-    .finally(newCardModal.setLoading(false, "Saving..."));
-  newCardModal.close();
+    .catch((err) => {
+      console.err(err);
+    })
+    .finally(() => {
+      newCardModal.setLoading(false, "Save");
+      newCardModal.close();
+    });
 }
 
 function handleCardDeleteSubmit(card) {
   console.log(card._id);
-  api.deleteCard(card._id).then((message) => {
-    console.log(message);
-    card.domDeleteCard();
-    deleteConfirmModal.close();
-  });
+  deleteConfirmModal.setLoadingConfirm(true, "Saving...");
+  api
+    .deleteCard(card._id)
+    .then((message) => {
+      console.log(message);
+      card.domDeleteCard();
+    })
+    .catch((err) => {
+      console.err(err);
+    })
+    .finally(() => {
+      deleteConfirmModal.setLoadingConfirm(true, "Yes");
+      deleteConfirmModal.close();
+    });
 }
 
-function handleAvatarChangeSubmit(Url) {
-  console.log(Url.avatarUrl);
+function handleAvatarChangeSubmit(url) {
+  console.log(url.avatarUrl);
   avatarChangeModal.setLoading(true, "Saving...");
   api
-    .updateAvatar(Url.avatarUrl)
+    .updateAvatar(url.avatarUrl)
     .then((res) => {
       console.log(res);
     })
-    .finally(avatarChangeModal.setLoading(false, "Saving..."));
-  user.setAvatarPic(Url.avatarUrl);
-  avatarChangeModal.close();
+    .catch((err) => {
+      console.err(err);
+    })
+    .finally(() => {
+      avatarChangeModal.setLoading(false, "Save");
+      user.setAvatarPic(url.avatarUrl);
+      avatarChangeModal.close();
+    });
 }
 
 function handleCardLike(cardId, isLiked) {
   if (isLiked === false) {
-    api.removeLikes(cardId).then((res) => {
-      console.log(res);
-    });
+    api
+      .removeLikes(cardId)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.err(err);
+      });
   } else {
-    api.addLikes(cardId).then((res) => {
-      console.log(res);
-    });
+    api
+      .addLikes(cardId)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.err(err);
+      });
     console.log(cardId);
   }
 }

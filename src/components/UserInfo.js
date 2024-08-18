@@ -18,9 +18,8 @@ export default class UserInfo {
   }
 
   setUserInfo(name, badge, avatar) {
-    this._name.textContent = name;
-    this._badge.textContent = badge;
-    this._avatar.src = avatar;
+    this.setUserInfoOnSubmit(name, badge);
+    this.setAvatarPic(avatar);
   }
 
   setAvatarPic(avatarURl) {

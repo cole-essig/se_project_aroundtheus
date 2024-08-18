@@ -4,8 +4,7 @@ export default class Card {
     cardSelector,
     handleImageClick,
     handleDeleteClick,
-    handleCardLike,
-    checkIfLiked
+    handleCardLike
   ) {
     this._isLiked = isLiked;
     this._id = _id;
@@ -15,7 +14,6 @@ export default class Card {
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleCardLike = handleCardLike;
-    this._checkIfLiked = checkIfLiked;
   }
 
   _setEventListeners() {
@@ -55,6 +53,14 @@ export default class Card {
       return truthy;
     } else {
       return falsey;
+    }
+  }
+
+  _checkIfLiked(ifLiked, element) {
+    if (ifLiked === true) {
+      element
+        .querySelector(".heart-button")
+        .classList.toggle("heart-button_active");
     }
   }
 

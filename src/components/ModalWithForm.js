@@ -8,10 +8,6 @@ export default class ModalWithForm extends Modal {
     this._handleFormSubmit = handleFormSubmit;
   }
 
-  close() {
-    super.close(this._modal);
-  }
-
   setLoading(isLoading, text) {
     const modalButton = this._modal.querySelector(".modal__button");
     console.log(modalButton);
@@ -33,7 +29,6 @@ export default class ModalWithForm extends Modal {
       e.preventDefault();
       console.log(this._getInputValues);
       this._handleFormSubmit(this._getInputValues());
-      this._modalForm.reset();
     });
   }
 }

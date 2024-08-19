@@ -18,6 +18,7 @@ export default class Modal {
     this._modal.classList.remove("modal_opened");
   }
 
+
   _closeWithEsc(e) {
     if (e.key === "Escape") {
       this.close();

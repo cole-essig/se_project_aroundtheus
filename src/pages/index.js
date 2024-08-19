@@ -149,13 +149,14 @@ function handleProfileEditSubmit({ name, badge }) {
     .then((message) => {
       console.log(message);
       user.setUserInfoOnSubmit(name, badge);
+      editProfileModal.close();
     })
     .catch((err) => {
-      console.err(err);
+      console.error(err);
+      editProfileModal.setLoading(false, "Save");
     })
     .finally(() => {
       editProfileModal.setLoading(false, "Save");
-      editProfileModal.close();
     });
 }
 
@@ -166,31 +167,35 @@ function handleCardAddSubmit({ name, cardUrl }) {
     .then((card) => {
       console.log(card);
       cardSection.addItem(makeCard(card));
+      newCardModal.close();
+      newCardModal.reset();
+      console.log(newCardModal._inputList);
     })
     .catch((err) => {
-      console.err(err);
+      console.error(err);
+      newCardModal.setLoading(false, "Save");
     })
     .finally(() => {
       newCardModal.setLoading(false, "Save");
-      newCardModal.close();
     });
 }
 
 function handleCardDeleteSubmit(card) {
   console.log(card._id);
-  deleteConfirmModal.setLoadingConfirm(true, "Saving...");
+  deleteConfirmModal.setLoadingConfirm(true, "Deleting...");
   api
     .deleteCard(card._id)
     .then((message) => {
       console.log(message);
       card.domDeleteCard();
+      deleteConfirmModal.close();
     })
     .catch((err) => {
-      console.err(err);
+      console.error(err);
+      deleteConfirmModal.setLoadingConfirm(false, "Yes");
     })
     .finally(() => {
-      deleteConfirmModal.setLoadingConfirm(true, "Yes");
-      deleteConfirmModal.close();
+      deleteConfirmModal.setLoadingConfirm(false, "Yes");
     });
 }
 
@@ -201,35 +206,38 @@ function handleAvatarChangeSubmit(url) {
     .updateAvatar(url.avatarUrl)
     .then((res) => {
       console.log(res);
+      user.setAvatarPic(url.avatarUrl);
+      avatarChangeModal.close();
     })
     .catch((err) => {
-      console.err(err);
+      console.error(err);
+      avatarChangeModal.setLoading(false, "Save");
     })
     .finally(() => {
       avatarChangeModal.setLoading(false, "Save");
-      user.setAvatarPic(url.avatarUrl);
-      avatarChangeModal.close();
     });
 }
 
-function handleCardLike(cardId, isLiked) {
+function handleCardLike(cardId, isLiked, changeLike) {
   if (isLiked === false) {
-    api
-      .removeLikes(cardId)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.err(err);
-      });
-  } else {
     api
       .addLikes(cardId)
       .then((res) => {
         console.log(res);
+        changeLike;
       })
       .catch((err) => {
-        console.err(err);
+        console.error(err);
+      });
+  } else {
+    api
+      .removeLikes(cardId)
+      .then((res) => {
+        console.log(res);
+        changeLike;
+      })
+      .catch((err) => {
+        console.error(err);
       });
     console.log(cardId);
   }

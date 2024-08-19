@@ -14,6 +14,10 @@ export default class ModalWithForm extends Modal {
     modalButton.textContent = isLoading ? text : "Save";
   }
 
+  reset() {
+    this._inputList.textContent = "";
+  }
+
   _getInputValues() {
     const formValues = {};
     this._inputList.forEach((inputEl) => {
@@ -27,7 +31,6 @@ export default class ModalWithForm extends Modal {
     super.setEventListeners();
     this._modalForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      console.log(this._getInputValues);
       this._handleFormSubmit(this._getInputValues());
     });
   }

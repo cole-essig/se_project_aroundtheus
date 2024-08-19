@@ -20,8 +20,11 @@ export default class Card {
     // card like button
     const heart = this._cardElement.querySelector(".heart-button");
     heart.addEventListener("click", () => {
-      this._handleHeartButton();
-      this._handleCardLike(this._id, this._heartButtonActivity());
+      this._handleCardLike(
+        this._id,
+        this._heartButtonActivity(),
+        this._handleHeartButton()
+      );
     });
 
     // card delete button

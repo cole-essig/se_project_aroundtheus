@@ -55,10 +55,15 @@ api
     console.error(err);
   });
 
-api.getUserInfo().then((info) => {
-  console.log(info);
-  user.setUserInfo(info.name, info.about, info.avatar);
-});
+api
+  .getUserInfo()
+  .then((info) => {
+    console.log(info);
+    user.setUserInfo(info.name, info.about, info.avatar);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 // Edit Profile Modal
 const editProfileModal = new ModalWithForm(
@@ -153,7 +158,6 @@ function handleProfileEditSubmit({ name, badge }) {
     })
     .catch((err) => {
       console.error(err);
-      editProfileModal.setLoading(false, "Save");
     })
     .finally(() => {
       editProfileModal.setLoading(false, "Save");
@@ -173,7 +177,6 @@ function handleCardAddSubmit({ name, cardUrl }) {
     })
     .catch((err) => {
       console.error(err);
-      newCardModal.setLoading(false, "Save");
     })
     .finally(() => {
       newCardModal.setLoading(false, "Save");
@@ -192,7 +195,6 @@ function handleCardDeleteSubmit(card) {
     })
     .catch((err) => {
       console.error(err);
-      deleteConfirmModal.setLoadingConfirm(false, "Yes");
     })
     .finally(() => {
       deleteConfirmModal.setLoadingConfirm(false, "Yes");
@@ -211,7 +213,6 @@ function handleAvatarChangeSubmit(url) {
     })
     .catch((err) => {
       console.error(err);
-      avatarChangeModal.setLoading(false, "Save");
     })
     .finally(() => {
       avatarChangeModal.setLoading(false, "Save");
@@ -224,7 +225,7 @@ function handleCardLike(cardId, isLiked, changeLike) {
       .addLikes(cardId)
       .then((res) => {
         console.log(res);
-        changeLike;
+        changeLike();
       })
       .catch((err) => {
         console.error(err);
@@ -234,7 +235,7 @@ function handleCardLike(cardId, isLiked, changeLike) {
       .removeLikes(cardId)
       .then((res) => {
         console.log(res);
-        changeLike;
+        changeLike();
       })
       .catch((err) => {
         console.error(err);

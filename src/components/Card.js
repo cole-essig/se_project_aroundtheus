@@ -23,7 +23,7 @@ export default class Card {
       this._handleCardLike(
         this._id,
         this._heartButtonActivity(),
-        this._handleHeartButton()
+        this._handleHeartButton
       );
     });
 

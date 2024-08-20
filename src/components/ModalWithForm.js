@@ -15,7 +15,7 @@ export default class ModalWithForm extends Modal {
   }
 
   reset() {
-    this._inputList.textContent = "";
+    this._modalForm.reset();
   }
 
   _getInputValues() {

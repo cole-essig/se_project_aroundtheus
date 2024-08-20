@@ -23,7 +23,7 @@ export default class Card {
       this._handleCardLike(
         this._id,
         this._heartButtonActivity(),
-        this._handleHeartButton
+        this._cardElement
       );
     });
 
@@ -41,12 +41,6 @@ export default class Card {
   }
 
   // EVENT LISTENER PRIVATE FUNCTIONS
-  _handleHeartButton() {
-    console.log(this._cardElement);
-    this._cardElement
-      .querySelector(".heart-button")
-      .classList.toggle("heart-button_active");
-  }
 
   _heartButtonActivity() {
     const heartButton = this._cardElement.querySelector(".heart-button");

@@ -117,17 +117,13 @@ function makeCard(cardData) {
   return card.generateCard();
 }
 
-function checkIfLiked(ifLiked, element) {
-  if (ifLiked === true) {
-    element
-      .querySelector(".heart-button")
-      .classList.toggle("heart-button_active");
-  }
-}
-
 function handleDeleteClick(cardId) {
   console.log(cardId);
   deleteConfirmModal.open(cardId);
+}
+
+function changeLike(card) {
+  card.querySelector(".heart-button").classList.toggle("heart-button_active");
 }
 
 // VALIDATION
@@ -219,13 +215,13 @@ function handleAvatarChangeSubmit(url) {
     });
 }
 
-function handleCardLike(cardId, isLiked, changeLike) {
+function handleCardLike(cardId, isLiked, card) {
   if (isLiked === false) {
     api
       .addLikes(cardId)
       .then((res) => {
         console.log(res);
-        changeLike();
+        changeLike(card);
       })
       .catch((err) => {
         console.error(err);
@@ -235,7 +231,7 @@ function handleCardLike(cardId, isLiked, changeLike) {
       .removeLikes(cardId)
       .then((res) => {
         console.log(res);
-        changeLike();
+        changeLike(card);
       })
       .catch((err) => {
         console.error(err);

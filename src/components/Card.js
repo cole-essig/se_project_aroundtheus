@@ -23,7 +23,8 @@ export default class Card {
       this._handleCardLike(
         this._id,
         this._heartButtonActivity(),
-        this._cardElement
+        this._cardElement,
+        this._changeLike
       );
     });
 
@@ -67,6 +68,9 @@ export default class Card {
     this._cardElement = null;
   }
 
+  _changeLike(card) {
+    card.querySelector(".heart-button").classList.toggle("heart-button_active");
+  }
   // DISPLAY OF CARD PUBLIC FUNCTION
 
   generateCard() {

@@ -122,10 +122,6 @@ function handleDeleteClick(cardId) {
   deleteConfirmModal.open(cardId);
 }
 
-function changeLike(card) {
-  card.querySelector(".heart-button").classList.toggle("heart-button_active");
-}
-
 // VALIDATION
 const editFormValidator = new FormValidator(
   validationSettings,
@@ -215,7 +211,7 @@ function handleAvatarChangeSubmit(url) {
     });
 }
 
-function handleCardLike(cardId, isLiked, card) {
+function handleCardLike(cardId, isLiked, card, changeLike) {
   if (isLiked === false) {
     api
       .addLikes(cardId)

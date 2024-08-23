@@ -15,6 +15,12 @@
   margin: auto;
 }
 
+.edit-button__image-avatar {
+  width: 26px;
+  height: 26px;
+  margin: auto;
+}
+
 .edit-button:hover {
   opacity: 0.6;
   cursor: pointer;

@@ -1,17 +1,31 @@
 export default class Card {
-  constructor({ title, link }, cardSelector, handleImageClick) {
-    this._title = title;
+  constructor(
+    { isLiked, _id, name, link },
+    cardSelector,
+    handleImageClick,
+    handleDeleteClick,
+    handleCardLike
+  ) {
+    this._isLiked = isLiked;
+    this._id = _id;
+    this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleDeleteClick = handleDeleteClick;
+    this._handleCardLike = handleCardLike;
   }
 
   _setEventListeners() {
     // card like button
     const heart = this._cardElement.querySelector(".heart-button");
     heart.addEventListener("click", () => {
-      this._handleHeartButton();
-      console.log(this._cardElement);
+      this._handleCardLike(
+        this._id,
+        this._heartButtonActivity(),
+        this._cardElement,
+        this._changeLike
+      );
     });
 
     // card delete button
@@ -19,26 +33,44 @@ export default class Card {
       ".card__delete-button"
     );
     deleteButton.addEventListener("click", () => {
-      this._handleDeleteCard();
+      this._handleDeleteClick(this);
     });
     // handleImageClick
     this._cardImageEl.addEventListener("click", () => {
-      this._handleImageClick(this._title, this._link);
+      this._handleImageClick(this._name, this._link);
     });
   }
 
   // EVENT LISTENER PRIVATE FUNCTIONS
-  _handleHeartButton() {
-    this._cardElement
-      .querySelector(".heart-button")
-      .classList.toggle("heart-button_active");
+
+  _heartButtonActivity() {
+    const heartButton = this._cardElement.querySelector(".heart-button");
+    const truthy = true;
+    const falsey = false;
+    if (heartButton.classList.contains("heart-button_active")) {
+      return truthy;
+    } else {
+      return falsey;
+    }
   }
 
-  _handleDeleteCard() {
+  _checkIfLiked(ifLiked, element) {
+    if (ifLiked === true) {
+      element
+        .querySelector(".heart-button")
+        .classList.toggle("heart-button_active");
+    }
+  }
+
+  // DELETEING CARDS ADDING LIKES
+  domDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
   }
 
+  _changeLike(card) {
+    card.querySelector(".heart-button").classList.toggle("heart-button_active");
+  }
   // DISPLAY OF CARD PUBLIC FUNCTION
 
   generateCard() {
@@ -49,8 +81,9 @@ export default class Card {
     this._setEventListeners();
 
     this._cardImageEl.src = this._link;
-    this._cardImageEl.alt = this._title;
-    this._cardTitleEl.textContent = this._title;
+    this._cardImageEl.alt = this._name;
+    this._cardTitleEl.textContent = this._name;
+    this._checkIfLiked(this._isLiked, this._cardElement);
 
     return this._cardElement;
   }

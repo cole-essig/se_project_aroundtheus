@@ -30,11 +30,20 @@
         <main>
           <section class="profile">
             <div class="profile__info">
-              <img
-                src="<%=require('./images/jacques-cousteau.jpg')%>"
-                alt="Profile Picture of User"
-                class="profile__picture"
-              />
+              <div class="profile__avatar_container">
+                <button class="profile__avatar_edit-button">
+                  <img
+                    src="<%=require('./images/edit-button.svg')%>"
+                    alt="Small stylus showing an edit function"
+                    class="edit-button__image-avatar"
+                  />
+                </button>
+                <img
+                  src=""
+                  alt="Profile Picture of User"
+                  class="profile__picture"
+                />
+              </div>
               <div class="profile__section">
                 <h1 class="profile__name" id="profile-name">
                   Jacques Cousteau
@@ -151,6 +160,41 @@
           />
           <button class="modal__close" id="image-modal-close"></button>
           <p class="modal__image-preview_text"></p>
+        </div>
+      </div>
+      <!-- Card Delete Popup -->
+      <div class="modal" id="delete-check-modal">
+        <div class="modal__container_delete-check">
+          <div class="modal__content">
+            <button class="modal__close" id="delete-modal-close"></button>
+            <h2 class="modal__heading_delete-check">Are you sure?</h2>
+            <form action="post">
+              <button class="modal__button_delete-check" type="submit">
+                Yes
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Avatar Picture Popup -->
+      <div class="modal" id="avatar-change-modal">
+        <div class="modal__container">
+          <div class="modal__content">
+            <button class="modal__close" id="card-modal-close"></button>
+            <h2 class="modal__heading">Change Profile Picture</h2>
+            <form class="modal__form" id="modal-form-3">
+              <input
+                type="url"
+                name="avatarUrl"
+                class="modal__input"
+                placeholder="Image URL"
+                id="image-url-input"
+                required
+              />
+              <span class="modal__error" id="image-url-input-error"></span>
+              <button class="modal__button" type="submit" disabled>Save</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

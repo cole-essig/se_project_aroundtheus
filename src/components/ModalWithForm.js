@@ -8,8 +8,14 @@ export default class ModalWithForm extends Modal {
     this._handleFormSubmit = handleFormSubmit;
   }
 
-  close() {
-    super.close(this._modal);
+  setLoading(isLoading, text) {
+    const modalButton = this._modal.querySelector(".modal__button");
+    console.log(modalButton);
+    modalButton.textContent = isLoading ? text : "Save";
+  }
+
+  reset() {
+    this._modalForm.reset();
   }
 
   _getInputValues() {
@@ -25,9 +31,7 @@ export default class ModalWithForm extends Modal {
     super.setEventListeners();
     this._modalForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      console.log(this._getInputValues);
       this._handleFormSubmit(this._getInputValues());
-      this._modalForm.reset();
     });
   }
 }
